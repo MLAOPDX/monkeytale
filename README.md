@@ -1,4 +1,4 @@
-# Monkeytale v0.1.0
+# Monkeytale v0.2.0
 
 Monkeytale is a markup language for composing, documenting, and visualizing a novel from flat files. It is built to meet my needs and, thus, opinionated to a fault.
 
