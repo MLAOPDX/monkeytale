@@ -1,6 +1,6 @@
 import pytest
 from click.testing import CliRunner
-from monkeytail import __version__, cli
+from monkeytale import __version__, cli
 
 
 def test_version_option():
