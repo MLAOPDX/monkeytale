@@ -26,7 +26,7 @@
     "git.followTagsWhenSync": true,
     "git.showPushSuccessNotification": true,
     "notebook.output.textLineLimit": 500,
-    "python.defaultInterpreterPath": "/Users/ao/Library/Caches/pypoetry/virtualenvs/monkeytail-6KDnfcyK-py3.10/bin/python",
+    "python.defaultInterpreterPath": "",
     "python.disableInstallationCheck": true,
     "python.formatting.blackArgs": [
         "--target-version",
