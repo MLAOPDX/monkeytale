@@ -5,6 +5,9 @@
         }
     },
     "editor.foldingImportsByDefault": true,
+    "editor.fontFamily": "'Fira Code Light', 'Triplicate T3c', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontLigatures": "'zero','cv14','ss05','ss03'",
+    "editor.fontSize": 13,
     "editor.formatOnSave": true,
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 5000,
@@ -44,11 +47,11 @@
     "python.testing.pytestArgs": [
         "--cov-report",
         "xml:tests/cov.xml",
-        "--cov=monkeytail",
+        "--cov=monkeytale",
         "--hypothesis-show-statistics"
     ],
     "python.testing.pytestEnabled": true,
     "python.testing.unittestEnabled": false,
-    "scm.diffDecorations": "gutter",
+    "scm.diffDecorationsGutterVisibility": "hover",
     "workbench.editor.closeOnFileDelete": true
 }
