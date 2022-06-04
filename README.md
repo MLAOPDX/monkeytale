@@ -3,7 +3,7 @@ output:
     word_document
 ---
 
-# Monkeytale v0.2.0
+# Monkeytale v0.2.1
 
 > "The book is a program." - [Matthew Butterick](https://docs.racket-lang.org/pollen/big-picture.html)
 

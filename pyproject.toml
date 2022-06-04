@@ -16,7 +16,7 @@ dependencies = [
     "textX>=3.0.0",
 ]
 name = "monkeytale"
-version = "0.2.0"
+version = "0.2.1"
 description = "An opinionated markup language for composing, documenting, and visualizing a novel."
 readme = "README.md"
 keywords = [
