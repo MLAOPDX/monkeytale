@@ -32,7 +32,7 @@ jobs:
           pdm --version
       - name: Install application & dependencies
         run: |
-          pdm install
+          pdm install -G test
       - name: Unit test application
         run: |
           pdm run pytest --version

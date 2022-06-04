@@ -30,20 +30,11 @@
     "notebook.output.textLineLimit": 500,
     "python.defaultInterpreterPath": "",
     "python.disableInstallationCheck": true,
-    "python.formatting.blackArgs": [
-        "--target-version",
-        "py310",
-        "--experimental-string-processing",
-        "--safe"
-    ],
     "python.formatting.blackPath": "black",
     "python.formatting.provider": "black",
     "python.linting.enabled": true,
     "python.sortImports.args": [
         "--profile=black"
-    ],
-    "python.testing.pytestArgs": [
-        "--hypothesis-show-statistics"
     ],
     "python.testing.pytestEnabled": true,
     "python.testing.unittestEnabled": false,
@@ -56,6 +47,5 @@
     "markdown-preview-enhanced.latexEngine": "prince",
     "markdown-preview-enhanced.enableCriticMarkupSyntax": true,
     "python.testing.pytestPath": "pytest",
-    "python.testing.autoTestDiscoverOnSaveEnabled": true,
-    "python.testing.cwd": "./tests"
+    "python.testing.autoTestDiscoverOnSaveEnabled": true
 }
