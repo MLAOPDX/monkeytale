@@ -5,18 +5,18 @@
 Monkeytale is a markup language for documenting and composing a story world and its novels within flat files. I am building this language to meet my opinionated needs for improving insights into my own writing.
 
 ## Design Principles
-- Don't opine. Mirror what is, but is not seen.
-- Story structure lives within the writing and not file and folder structure
-- Only flat files with version control and durability of access
+- Don't opine. Document.
+- Story structure lives within the writing, not in file and folder structure
+- Only flat files with version control
 - Simple syntax
 - No configuration
 
 ## Planned Functionality
-- Compose one or multiple narratives from story components
-- Navigate to any named story component
+- Compose multiple narratives (re)using story components
 - Execute from continuous integration server
 - Derive story structure knowledge from story components and their content
 - Provide plugin mount point for generation of documents from story structure extracted by Monkeytale
+- Navigate to any named story component
 
 ## Dismissed Functionality
 - Advice on how to improve or correct the writing
