@@ -22,18 +22,14 @@ jobs:
     steps:
       - name: Check-out
         uses: actions/checkout@v2
-      # - name: Install Python
-      #   uses: actions/setup-python@v2
-      #   with:
-      #     python-version: "3.10"
       - name: Install PDM
         uses: pdm-project/setup-pdm@main
         with:
-          python-version: "3.10" # Version range or exact version of a Python version to use, the same as actions/setup-python
-          architecture: x64 # The target architecture (x86, x64) of the Python interpreter. the same as actions/setup-python
-          # version: 1.4.0 # The version of PDM to install. Leave it as empty to use the latest version from PyPI
-          prerelease: false # Allow prerelease versions to be installed
-          enable-pep582: true # Enable PEP 582 package loading globally
+          python-version: "3.10" # Same as actions/setup-python
+          architecture: x64 # Same as actions/setup-python
+          # version: 1.4.0 # The version of PDM to install. Leave empty to use latest from PyPI
+          prerelease: false # Allow prereleases
+          enable-pep582: true # Enable PEP 582 globally
       - name: Install application & dependencies
         run: |
           pdm --version
@@ -49,13 +45,14 @@ jobs:
 
   DeployToTestPyPI:
     needs: [Build]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, 'chore(testpypi)')
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, 'chore(test_release)')
 
     runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
     env:
+      # Set environment variables for Python Semantic Release to pick-up
       REPOSITORY_USERNAME: __token__
       REPOSITORY_PASSWORD: ${{ secrets.TESTPYPI_TOKEN }}
 
@@ -86,6 +83,7 @@ jobs:
       run:
         shell: bash
     env:
+      # Set environment variables for Python Semantic Release to pick-up
       REPOSITORY_USERNAME: __token__
       REPOSITORY_PASSWORD: ${{ secrets.PYPI_TOKEN }}
 

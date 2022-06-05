@@ -6,13 +6,13 @@ Monkeytale is a markup language for documenting and composing a story world and 
 
 ## Design Principles
 - Don't opine. Document.
-- Story structure lives within the writing, not in file and folder structure
-- Only flat files with version control
-- Simple syntax
-- No configuration
+- Story lives within the writing, not in file names and folder structures.
+- Only flat files and binary media assets (JPG, MP3, etc.) are supported.
+- Simple syntax.
+- No configuration, or as close to it as possible.
 
 ## Planned Functionality
-- Compose multiple narratives (re)using story components
+- Compose multiple narratives (re-)using story components
 - Execute from continuous integration server
 - Derive story structure knowledge from story components and their content
 - Provide plugin mount point for generation of documents from story structure extracted by Monkeytale
@@ -39,3 +39,4 @@ Check the [change log](https://github.com/MLAOPDX/monkeytale/blob/main/CHANGELOG
 - [Markdown Preview Enhanced](https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced) extension for Markdown and Mermaid diagram display and conversion to docx using [PanDoc](https://pandoc.org/) and PDF using Safari.
 - [Github Actions](https://github.com/features/actions) as execution platform
 - Use .@ as the file extension to indicate Monkeytale files
+- Git repo fork as delivery system
