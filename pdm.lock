@@ -813,7 +813,7 @@ summary = "Variables defined by the XDG Base Directory Specification"
 
 [metadata]
 lock_version = "3.1"
-content_hash = "sha256:7e28bbdc316845621964aba36cbf6303021ba856c345d87f500b80fd1316079a"
+content_hash = "sha256:adce6d42d046d1acf30e83cde1a49fa4c69811bd057c9d68e36bb363cb7d316c"
 
 [metadata.files]
 "appnope 0.1.3" = [
