@@ -79,7 +79,9 @@ version_variable = [
 
 [tool.pytest.ini_options]
 minversion = "6.0"
-addopts = "--ignore=__pypackages__ --hypothesis-show-statistics"
+# __pypackages__ will likely contain tests from dependencies
+# Report out failures and Hypothesis results
+addopts = "--ignore=__pypackages__ --hypothesis-show-statistics -ra"
 testpaths = ["tests"]
 
 [tool.black]
