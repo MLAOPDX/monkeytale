@@ -55,10 +55,15 @@ build-backend = "pdm.pep517.api"
 includes = []
 
 [tool.pdm.dev-dependencies]
-lint = ["bandit>=1.7.4", "black[jupyter]>=22.3.0", "isort>=5.10.1"]
-test = ["hypothesis>=6.46.1", "hypothesis-faker>=0.0.23", "pytest>=7.1.2"]
+format = ["black[jupyter]>=22.3.0", "isort>=5.10.1"]
+test = [
+    "bandit>=1.7.4",
+    "devtools>=0.8.0",
+    "hypothesis>=6.46.1",
+    "hypothesis-faker>=0.0.23",
+    "pytest>=7.1.2",
+]
 tools = ["devtools>=0.8.0", "jupyter>=1.0.0"]
-WTF = []
 
 [tool.semantic_release]
 branch = "main"
@@ -72,3 +77,13 @@ version_variable = [
     "monkeytale/__init__.py:__version__",
     "pyproject.toml:version",
 ]
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "--ignore=__pypackages__ --hypothesis-show-statistics"
+testpaths = ["tests"]
+
+[tool.black]
+target-version = ['py310']
+experimental-string-processing = true
+safe = true
