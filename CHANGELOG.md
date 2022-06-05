@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.2.3 (2022-06-05)
+### Fix
+* **ci:** Add setuptools as dependency ([`13e7e9d`](https://github.com/MLAOPDX/monkeytale/commit/13e7e9d86f7bd6aca1075faf0747353545c35f43))
+* **deps:** Exclude dependencies not yet needed ([`273d23e`](https://github.com/MLAOPDX/monkeytale/commit/273d23e2a367df70f25090e5fb1abf74e8488480))
+* **deps:** Remove dependencies not yet needed ([`d985837`](https://github.com/MLAOPDX/monkeytale/commit/d985837a9857be10cb6f2b7de947cdd25eafdb88))
+
 ## v0.2.2 (2022-06-05)
 ### Fix
 * **#2:** Make all dev dependencies optional ([`cdecc69`](https://github.com/MLAOPDX/monkeytale/commit/cdecc6966170a0929e0cb950e9c056fcf7621a6b))
