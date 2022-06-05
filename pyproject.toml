@@ -18,6 +18,7 @@ dependencies = [
 name = "monkeytale"
 version = "0.2.2"
 description = "An opinionated markup language for composing, documenting, and visualizing a novel."
+license = { text = "Unlicense" }
 readme = "README.md"
 keywords = [
     "novel",
@@ -41,6 +42,8 @@ classifiers = [
 
 [project.urls]
 homepage = "https://github.com/MLAOPDX/monkeytale/"
+repository = "https://github.com/MLAOPDX/monkeytale/"
+changelog = "https://github.com/MLAOPDX/monkeytale/blob/main/CHANGELOG.md"
 
 [project.scripts]
 "@" = "monkeytale.__init__:cli"
@@ -70,8 +73,8 @@ branch = "main"
 build_command = "pip install --user pdm && pdm build"
 major_on_zero = false # Version 0 allows breaking changes without bumping major version
 repository = "testpypi" # Default to the safety of a test environment
-upload_to_release = true # Github releases
-upload_to_repository = true # PyPI or TestPyPI
+upload_to_release = true # Create Github releases
+upload_to_repository = true # Publish to artifact repository
 version_pattern = ["README.md:# Monkeytale v{version}"]
 version_variable = [
     "monkeytale/__init__.py:__version__",

@@ -27,11 +27,16 @@ jobs:
         with:
           python-version: "3.10"
       - name: Install PDM
-        run: |
-          pip install --user pdm
-          pdm --version
+        uses: pdm-project/setup-pdm@main
+        with:
+          python-version: "3.10" # Version range or exact version of a Python version to use, the same as actions/setup-python
+          architecture: x64 # The target architecture (x86, x64) of the Python interpreter. the same as actions/setup-python
+          # version: 1.4.0 # The version of PDM to install. Leave it as empty to use the latest version from PyPI
+          prerelease: false # Allow prerelease versions to be installed
+          enable-pep582: true # Enable PEP 582 package loading globally
       - name: Install application & dependencies
         run: |
+          pdm --version
           pdm install -G test
       - name: Unit test application
         run: |
