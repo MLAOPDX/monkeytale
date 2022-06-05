@@ -6,12 +6,9 @@ requires-python = ">=3.10"
 dependencies = [
     "click>=8.0.0",
     # "identify>=2.5.0",
-    # "keyring>=23.5.0",
     # "loguru>=0.6.0",
     # "NRCLex>=3.0.0",
     # "pendulum>=2.1.2",
-    # "python-docx>=0.8.11",
-    # "sh>=1.14.2",
     # "textblob>=0.17.1",
     # "textX>=3.0.0",
 ]
@@ -64,7 +61,7 @@ test = [
     "hypothesis-faker>=0.0.23",
     "pytest>=7.1.2",
 ]
-tools = ["devtools>=0.8.0", "jupyter>=1.0.0"]
+jupyter = ["jupyter>=1.0.0"]
 
 [tool.semantic_release]
 branch = "main"

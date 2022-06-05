@@ -658,7 +658,7 @@ dependencies = [
 
 [[package]]
 name = "qtconsole"
-version = "5.3.0"
+version = "5.3.1"
 requires_python = ">= 3.7"
 summary = "Jupyter Qt console"
 dependencies = [
@@ -669,7 +669,7 @@ dependencies = [
     "pygments",
     "pyzmq>=17.1",
     "qtpy>=2.0.1",
-    "traitlets",
+    "traitlets!=5.2.1,!=5.2.2",
 ]
 
 [[package]]
@@ -813,7 +813,7 @@ summary = "Variables defined by the XDG Base Directory Specification"
 
 [metadata]
 lock_version = "3.1"
-content_hash = "sha256:41061e0ebd2419402445c6e63fc29041033acda418e89fd1378d61204e0ed361"
+content_hash = "sha256:7e28bbdc316845621964aba36cbf6303021ba856c345d87f500b80fd1316079a"
 
 [metadata.files]
 "appnope 0.1.3" = [
@@ -1413,9 +1413,9 @@ content_hash = "sha256:41061e0ebd2419402445c6e63fc29041033acda418e89fd1378d61204
     {file = "pyzmq-23.1.0-pp39-pypy39_pp73-win_amd64.whl", hash = "sha256:05ec90a8da618f2398f9d1aa20b18a9ef332992c6ac23e8c866099faad6ef0d6"},
     {file = "pyzmq-23.1.0.tar.gz", hash = "sha256:1df26aa854bdd3a8341bf199064dd6aa6e240f2eaa3c9fa8d217e5d8b868c73e"},
 ]
-"qtconsole 5.3.0" = [
-    {file = "qtconsole-5.3.0-py3-none-any.whl", hash = "sha256:75f2ded876444454edcb5a53262149e33b53db3a4a53116b7c3df52830905b0f"},
-    {file = "qtconsole-5.3.0.tar.gz", hash = "sha256:8e3520fdc75e46abc4cc6cffeca16fa2652754109b8ae839fa28e27d1eba5625"},
+"qtconsole 5.3.1" = [
+    {file = "qtconsole-5.3.1-py3-none-any.whl", hash = "sha256:d364592d7ede3257f1e17fcdbfd339c26e2cc638ca4fa4ee56a724e26ea13c81"},
+    {file = "qtconsole-5.3.1.tar.gz", hash = "sha256:b73723fac43938b684dcb237a88510dc7721c43a726cea8ade179a2927c0a2f3"},
 ]
 "qtpy 2.1.0" = [
     {file = "QtPy-2.1.0-py3-none-any.whl", hash = "sha256:aee0586081f943029312becece9f63977b0a9e3788f77a6ac8cc74802bb173d6"},
