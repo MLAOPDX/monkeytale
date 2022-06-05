@@ -43,37 +43,6 @@ jobs:
           pdm run bandit --version
           pdm run bandit --recursive --skip B101 -x ./tests -x ./__pypackages__ .
 
-  DeployToTestPyPI:
-    needs: [Build]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, 'chore(test_release)')
-
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-    env:
-      # Set environment variables for Python Semantic Release to pick-up
-      REPOSITORY_USERNAME: __token__
-      REPOSITORY_PASSWORD: ${{ secrets.TESTPYPI_TOKEN }}
-
-    steps:
-      - name: Check-out with history
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0 # Pull history for semantic versioning from commit messages
-      - name: Install Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: "3.10"
-      - name: Install Python Semantic Release
-        run: |
-          pip install python-semantic-release
-          git config user.name semantic-release
-          git config user.email semantic-release@dwlib.com
-      - name: Publish application to test.pypi.org
-        run: |
-          semantic-release publish -D repository=testpypi
-
   DeployToPyPI:
     needs: [Build]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, 'chore(release)')
@@ -104,3 +73,65 @@ jobs:
       - name: Publish application to pypi.org
         run: |
           semantic-release publish -D repository=pypi
+
+  # Confirm deployment to PyPI was successful
+  InstallFromPyPI:
+    needs: [DeployToPyPI]
+
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Check-out
+        uses: actions/checkout@v2
+      - name: Install PDM
+        uses: pdm-project/setup-pdm@main
+        with:
+          python-version: "3.10" # Same as actions/setup-python
+          architecture: x64 # Same as actions/setup-python
+          # version: 1.4.0 # Which PDM version, empty uses latest from PyPI
+          prerelease: false # Do not allow prerelease
+          enable-pep582: true # Enable PEP 582 globally
+      - name: Install Monkeytale
+        run: |
+          pdm --version
+          pdm init -n
+          pdm add monkeytale
+      - name: Run Monkeytale
+        run: |
+          pdm run @ --version
+
+  # Deploy to TestPyPI using commit with message: fix(test_release)
+  # NOTE: This will bump version (major.minor.PATCH) for the package as a whole!
+  DeployToTestPyPI:
+    needs: [Build]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, 'fix(test_release)')
+
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    env:
+      # Set environment variables for Python Semantic Release
+      REPOSITORY_USERNAME: __token__
+      REPOSITORY_PASSWORD: ${{ secrets.TESTPYPI_TOKEN }}
+
+    steps:
+      - name: Check-out with history
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Pull history for semantic versioning from commit messages
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.10"
+      - name: Install Python Semantic Release
+        run: |
+          pip install python-semantic-release
+          git config user.name semantic-release
+          git config user.email semantic-release@dwlib.com
+      - name: Publish application to test.pypi.org
+        run: |
+          semantic-release publish -D repository=testpypi
