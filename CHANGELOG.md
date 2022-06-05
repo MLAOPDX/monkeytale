@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.2.4 (2022-06-05)
+### Fix
+* **ci:** Test PyPI deployment ([`1ce4f99`](https://github.com/MLAOPDX/monkeytale/commit/1ce4f9975483c14c82f40a9e570ffd2c0de65827))
+
 ## v0.2.3 (2022-06-05)
 ### Fix
 * **ci:** Add setuptools as dependency ([`13e7e9d`](https://github.com/MLAOPDX/monkeytale/commit/13e7e9d86f7bd6aca1075faf0747353545c35f43))
