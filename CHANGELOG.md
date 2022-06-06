@@ -2,6 +2,11 @@
 
 <!--next-version-placeholder-->
 
+## v0.2.5 (2022-06-05)
+### Fix
+* **ci:** Remove --prod option ([`c969f9f`](https://github.com/MLAOPDX/monkeytale/commit/c969f9f3680c2fd439e85b7719d3c6c9ea5c64b6))
+* **ci:** Add -d to reference dev dependencies ([`b0fa365`](https://github.com/MLAOPDX/monkeytale/commit/b0fa365ffdc5010bdd72d37030814ade23eca2d6))
+
 ## v0.2.4 (2022-06-05)
 ### Fix
 * **ci:** Test PyPI deployment ([`1ce4f99`](https://github.com/MLAOPDX/monkeytale/commit/1ce4f9975483c14c82f40a9e570ffd2c0de65827))
