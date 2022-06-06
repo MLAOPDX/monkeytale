@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.2.7 (2022-06-06)
+### Fix
+* **config:** Add directory to includes ([`dc4dc81`](https://github.com/MLAOPDX/monkeytale/commit/dc4dc81d0c81071e1e652b4597852d32fe268dba))
+
 ## v0.2.6 (2022-06-06)
 ### Fix
 * **ci:** Do not check out on PyPI install ([`6147751`](https://github.com/MLAOPDX/monkeytale/commit/6147751aa4fb0da8425c63e049720f12a5eba25a))
