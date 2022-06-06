@@ -50,7 +50,7 @@ requires = ["pdm-pep517"]
 build-backend = "pdm.pep517.api"
 
 [tool.pdm]
-includes = []
+includes = ["monkeytale"]
 
 [tool.pdm.dev-dependencies]
 format = ["black[jupyter]>=22.3.0", "isort>=5.10.1"]

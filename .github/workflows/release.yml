@@ -133,3 +133,31 @@ jobs:
       - name: Publish application to test.pypi.org
         run: |
           semantic-release publish -D repository=testpypi
+
+  # Confirm deployment to PyPI was successful
+  InstallFromTestPyPI:
+    needs: [DeployToTestPyPI]
+
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Install PDM
+        uses: pdm-project/setup-pdm@main
+        with:
+          python-version: "3.10" # Same as actions/setup-python
+          architecture: x64 # Same as actions/setup-python
+          # version: 1.4.0 # Which PDM version, empty uses latest from PyPI
+          prerelease: false # Do not allow prerelease
+          enable-pep582: true # Enable PEP 582 globally
+      - name: Install Monkeytale
+        run: |
+          pdm --version
+          pdm config pypi.url https://test.pypi.org/simple
+          pdm init -n
+          pdm add monkeytale
+      - name: Run Monkeytale
+        run: |
+          pdm run @ --version
