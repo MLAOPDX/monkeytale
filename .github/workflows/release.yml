@@ -84,8 +84,6 @@ jobs:
         shell: bash
 
     steps:
-      - name: Check-out
-        uses: actions/checkout@v2
       - name: Install PDM
         uses: pdm-project/setup-pdm@main
         with:
