@@ -73,7 +73,7 @@ jobs:
       - name: Publish application to pypi.org
         run: |
           semantic-release publish -D repository=pypi
-          echo '::set-output name=CURRENT_VERSION::semantic-release --current print-version'
+          echo '::set-output name=CURRENT_VERSION::$(semantic-release --current print-version)\n'
         id: monkeytale-semver
       - name: Published version
         run: echo "Monkeytale v ${{ steps.monkeytale-semver.outputs.CURRENT_VERSION }}"
