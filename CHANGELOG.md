@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.2.9 (2022-06-09)
+### Fix
+* **ci:** Capture output ([`1e55621`](https://github.com/MLAOPDX/monkeytale/commit/1e5562189343073134d3d7fbc9958ae5896b8e0c))
+
 ## v0.2.8 (2022-06-09)
 ### Fix
 * **ci:** Collect generated version number ([`9158901`](https://github.com/MLAOPDX/monkeytale/commit/9158901b99dcd203046b9b4f9ab9420eaadd446c))
