@@ -61,7 +61,7 @@ test = [
     "hypothesis-faker>=0.0.23",
     "pytest>=7.1.2",
     "pytest-cov>=3.0.0",
-    "setuptools>=62.3.2",
+    "setuptools>=62.3.2",       # Needed to avoid missing module pkg_resources
 ]
 jupyter = ["jupyter>=1.0.0"]
 
@@ -80,8 +80,8 @@ version_variable = [
 
 [tool.pytest.ini_options]
 minversion = "6.0"
-# __pypackages__ will likely contain tests from dependencies
 # Report out failures and Hypothesis results
+# - skip __pypackages__ to avoid discovery of tests from dependencies
 addopts = "--ignore=__pypackages__ --hypothesis-show-statistics --cov-report xml:tests/cov.xml --cov=monkeytale -ra"
 testpaths = ["tests"]
 
