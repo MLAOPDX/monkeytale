@@ -13,7 +13,7 @@ dependencies = [
     # "textX>=3.0.0",
 ]
 name = "monkeytale"
-version = "0.2.7"
+version = "0.2.8"
 description = "An opinionated markup language for composing, documenting, and visualizing a novel."
 license = { text = "Unlicense" }
 readme = "README.md"

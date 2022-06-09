@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.2.8 (2022-06-09)
+### Fix
+* **ci:** Collect generated version number ([`9158901`](https://github.com/MLAOPDX/monkeytale/commit/9158901b99dcd203046b9b4f9ab9420eaadd446c))
+
 ## v0.2.7 (2022-06-06)
 ### Fix
 * **config:** Add directory to includes ([`dc4dc81`](https://github.com/MLAOPDX/monkeytale/commit/dc4dc81d0c81071e1e652b4597852d32fe268dba))
