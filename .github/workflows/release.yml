@@ -57,7 +57,7 @@ jobs:
       REPOSITORY_PASSWORD: ${{ secrets.PYPI_TOKEN }}
 
     outputs:
-      current-semver: ${{ steps.current-semver.outputs.number }}
+      current-semver: ${{ steps.get-current-semver.outputs.number }}
     steps:
       - name: Check-out with history
         uses: actions/checkout@v2
@@ -75,10 +75,10 @@ jobs:
       - name: Publish application to pypi.org
         run: |
           semantic-release publish -D repository=pypi
-          echo '::set-output name=number::$(semantic-release --current print-version)\n'
-        id: current-semver
+          echo '::set-output name=number::$(semantic-release --current print-version)'
+        id: get-current-semver
       - name: Published version
-        run: echo "Monkeytale v${{ steps.current-semver.outputs.number }}"
+        run: echo "Monkeytale v${{ steps.get-current-semver.outputs.number }}"
 
   # Confirm deployment to PyPI was successful
   InstallFromPyPI:
