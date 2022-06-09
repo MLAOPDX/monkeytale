@@ -56,6 +56,8 @@ jobs:
       REPOSITORY_USERNAME: __token__
       REPOSITORY_PASSWORD: ${{ secrets.PYPI_TOKEN }}
 
+    outputs:
+      current-semver: ${{ steps.current-semver.outputs.number }}
     steps:
       - name: Check-out with history
         uses: actions/checkout@v2
@@ -73,10 +75,10 @@ jobs:
       - name: Publish application to pypi.org
         run: |
           semantic-release publish -D repository=pypi
-          echo '::set-output name=CURRENT_VERSION::$(semantic-release --current print-version)\n'
-        id: monkeytale-semver
+          echo '::set-output name=number::$(semantic-release --current print-version)\n'
+        id: current-semver
       - name: Published version
-        run: echo "Monkeytale v${{ steps.monkeytale-semver.outputs.CURRENT_VERSION }}"
+        run: echo "Monkeytale v${{ steps.current-semver.outputs.number }}"
 
   # Confirm deployment to PyPI was successful
   InstallFromPyPI:
@@ -89,7 +91,7 @@ jobs:
 
     steps:
       - name: Published version
-        run: echo "Monkeytale v${{ steps.monkeytale-semver.outputs.CURRENT_VERSION }}"
+        run: echo "Monkeytale v${{ needs.DeployToPyPI.outputs.current-semver }}"
       - name: Install PDM
         uses: pdm-project/setup-pdm@main
         with:
