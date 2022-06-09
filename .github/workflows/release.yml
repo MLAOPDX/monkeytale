@@ -76,7 +76,7 @@ jobs:
           echo '::set-output name=CURRENT_VERSION::$(semantic-release --current print-version)\n'
         id: monkeytale-semver
       - name: Published version
-        run: echo "Monkeytale v ${{ steps.monkeytale-semver.outputs.CURRENT_VERSION }}"
+        run: echo "Monkeytale v${{ steps.monkeytale-semver.outputs.CURRENT_VERSION }}"
 
   # Confirm deployment to PyPI was successful
   InstallFromPyPI:
@@ -88,6 +88,8 @@ jobs:
         shell: bash
 
     steps:
+      - name: Published version
+        run: echo "Monkeytale v${{ steps.monkeytale-semver.outputs.CURRENT_VERSION }}"
       - name: Install PDM
         uses: pdm-project/setup-pdm@main
         with:
