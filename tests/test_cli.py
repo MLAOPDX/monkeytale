@@ -7,9 +7,7 @@ def test_plain_cli():
     runner = CliRunner()
     result = runner.invoke(cli, [])
     assert result.exit_code == 0
-    assert (
-        result.output == f"/Users/ao/Documents/AO/monkeytale/monkeytale/__init__.py!\n"
-    )
+    assert "monkeytale/monkeytale/__init__.py!" in result.output
 
 
 def test_version_option():
