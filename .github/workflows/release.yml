@@ -57,8 +57,6 @@ jobs:
       REPOSITORY_PASSWORD: ${{ secrets.PYPI_TOKEN }}
 
     steps:
-      - name: Set artifacts path
-        run: mkdir -p artifacts/Deploy
       - name: Check-out with history
         uses: actions/checkout@v2
         with:
@@ -75,7 +73,9 @@ jobs:
       - name: Publish application to pypi.org
         run: semantic-release publish -D repository=pypi
       - name: Record version
-        run: semantic-release --current print-version > artifacts/Deploy/semver
+        run: |
+          mkdir -p artifacts/Deploy
+          semantic-release --current print-version > artifacts/Deploy/semver
       - uses: actions/upload-artifact@v3
         with:
           name: Deploy
