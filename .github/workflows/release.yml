@@ -13,7 +13,7 @@ env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
-  Build:
+  Test:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -43,7 +43,7 @@ jobs:
           pdm run bandit --version
           pdm run bandit --recursive --skip B101 -x ./tests -x ./__pypackages__ .
 
-  DeployToPyPI:
+  Deploy:
     needs: [Build]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, 'chore(release)')
 
@@ -56,9 +56,9 @@ jobs:
       REPOSITORY_USERNAME: __token__
       REPOSITORY_PASSWORD: ${{ secrets.PYPI_TOKEN }}
 
-    outputs:
-      current-semver: ${{ steps.get-current-semver.outputs.number }}
     steps:
+      - name: Set artifacts path
+        run: mkdir -p artifacts/Deploy
       - name: Check-out with history
         uses: actions/checkout@v2
         with:
@@ -73,16 +73,17 @@ jobs:
           git config user.name semantic-release
           git config user.email semantic-release@dwlib.com
       - name: Publish application to pypi.org
-        run: |
-          semantic-release publish -D repository=pypi
-          echo '::set-output name=number::$(semantic-release --current print-version)'
-        id: get-current-semver
-      - name: Published version
-        run: echo "Monkeytale v${{ steps.get-current-semver.outputs.number }}"
+        run: semantic-release publish -D repository=pypi
+      - name: Record version
+        run: semantic-release --current print-version > artifacts/Deploy/semver
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Deploy
+          path: artifacts/Deploy/*
 
   # Confirm deployment to PyPI was successful
-  InstallFromPyPI:
-    needs: [DeployToPyPI]
+  TestDeploy:
+    needs: [Deploy]
 
     runs-on: ubuntu-latest
     defaults:
@@ -90,8 +91,12 @@ jobs:
         shell: bash
 
     steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: Deploy
+          path: artifacts/Deploy
       - name: Published version
-        run: echo "Monkeytale v${{ needs.DeployToPyPI.outputs.current-semver }}"
+        run: echo "Expecting Monkeytale v$(cat artifacts/Deploy/semver)"
       - name: Install PDM
         uses: pdm-project/setup-pdm@main
         with:
