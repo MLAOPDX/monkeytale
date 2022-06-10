@@ -44,7 +44,7 @@ jobs:
           pdm run bandit --recursive --skip B101 -x ./tests -x ./__pypackages__ .
 
   Deploy:
-    needs: [Build]
+    needs: [Test]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, 'chore(release)')
 
     runs-on: ubuntu-latest
@@ -117,7 +117,7 @@ jobs:
   # Deploy to TestPyPI using commit with message: fix(test_release)
   # NOTE: This will bump version (major.minor.PATCH) for the package as a whole!
   DeployToTestPyPI:
-    needs: [Build]
+    needs: [Test]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, 'fix(test_release)')
 
     runs-on: ubuntu-latest
