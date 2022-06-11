@@ -80,6 +80,7 @@ jobs:
         with:
           name: Deploy
           path: artifacts/Deploy/*
+          retention-days: 1 # Do not waste space
 
   # Confirm deployment to PyPI was successful
   TestDeploy:
@@ -110,9 +111,11 @@ jobs:
           pdm --version
           pdm init -n
           pdm add monkeytale
-      - name: Run Monkeytale
+      - name: Check Monkeytale version
         run: |
-          pdm run @ --version
+          mkdir -p artifacts/TestDeploy
+          pdm run @ --version | awk '{print $3}' > artifacts/TestDeploy/semver
+          diff artifacts/TestDeploy/semver artifacts/Deploy/semver
 
   # Deploy to TestPyPI using commit with message: fix(test_release)
   # NOTE: This will bump version (major.minor.PATCH) for the package as a whole!
