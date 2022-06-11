@@ -80,7 +80,7 @@ jobs:
         with:
           name: Deploy
           path: artifacts/Deploy/*
-          retention-days: 1 # Do not waste space
+          retention-days: 1 # Do not waste space indefinitely
 
   # Confirm deployment to PyPI was successful
   TestDeploy:
@@ -92,89 +92,26 @@ jobs:
         shell: bash
 
     steps:
-      - uses: actions/download-artifact@v3
+      - name: Give PyPI time to expose new version
+        run: sleep 15
+      - name: Install PDM
+        uses: pdm-project/setup-pdm@main
+        with:
+          python-version: "3.10" # Same as actions/setup-python
+          architecture: x64 # Same as actions/setup-python
+          # version: 1.4.0 # Which PDM version, empty uses latest from PyPI
+          prerelease: false # Do not allow prerelease
+          enable-pep582: true # Enable PEP 582 globally
+      - name: Pull artifacts from Deploy
+        uses: actions/download-artifact@v3
         with:
           name: Deploy
           path: artifacts/Deploy
-      - name: Published version
-        run: echo "Expecting Monkeytale v$(cat artifacts/Deploy/semver)"
-      - name: Install PDM
-        uses: pdm-project/setup-pdm@main
-        with:
-          python-version: "3.10" # Same as actions/setup-python
-          architecture: x64 # Same as actions/setup-python
-          # version: 1.4.0 # Which PDM version, empty uses latest from PyPI
-          prerelease: false # Do not allow prerelease
-          enable-pep582: true # Enable PEP 582 globally
-      - name: Install Monkeytale
+      - name: Compare expected and found versions
         run: |
-          pdm --version
           pdm init -n
-          sleep 15
           pdm add monkeytale
-      - name: Check Monkeytale version
-        run: |
           mkdir -p artifacts/TestDeploy
           pdm run @ --version | awk '{print $3}' > artifacts/TestDeploy/semver
+          echo "Expected v$(cat artifacts/Deploy/semver) and found v$(cat artifacts/TestDeploy/semver)"
           diff artifacts/TestDeploy/semver artifacts/Deploy/semver
-
-  # Deploy to TestPyPI using commit with message: fix(test_release)
-  # NOTE: This will bump version (major.minor.PATCH) for the package as a whole!
-  DeployToTestPyPI:
-    needs: [Test]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, 'fix(test_release)')
-
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-    env:
-      # Set environment variables for Python Semantic Release
-      REPOSITORY_USERNAME: __token__
-      REPOSITORY_PASSWORD: ${{ secrets.TESTPYPI_TOKEN }}
-
-    steps:
-      - name: Check-out with history
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0 # Pull history for semantic versioning from commit messages
-      - name: Install Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: "3.10"
-      - name: Install Python Semantic Release
-        run: |
-          pip install python-semantic-release
-          git config user.name semantic-release
-          git config user.email semantic-release@dwlib.com
-      - name: Publish application to test.pypi.org
-        run: |
-          semantic-release publish -D repository=testpypi
-
-  # Confirm deployment to PyPI was successful
-  InstallFromTestPyPI:
-    needs: [DeployToTestPyPI]
-
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-
-    steps:
-      - name: Install PDM
-        uses: pdm-project/setup-pdm@main
-        with:
-          python-version: "3.10" # Same as actions/setup-python
-          architecture: x64 # Same as actions/setup-python
-          # version: 1.4.0 # Which PDM version, empty uses latest from PyPI
-          prerelease: false # Do not allow prerelease
-          enable-pep582: true # Enable PEP 582 globally
-      - name: Install Monkeytale
-        run: |
-          pdm --version
-          pdm config pypi.url https://test.pypi.org/simple
-          pdm init -n
-          pdm add monkeytale
-      - name: Run Monkeytale
-        run: |
-          pdm run @ --version
