@@ -114,7 +114,7 @@ jobs:
       - name: Check Monkeytale version
         run: |
           mkdir -p artifacts/TestDeploy
-          pdm run @ --version | awk '{print $3}' > artifacts/TestDeploy/semver
+          pdm run @ --version | awk '{print $1}' > artifacts/TestDeploy/semver
           diff artifacts/TestDeploy/semver artifacts/Deploy/semver
 
   # Deploy to TestPyPI using commit with message: fix(test_release)
