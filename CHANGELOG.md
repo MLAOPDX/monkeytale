@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.2.11 (2022-06-11)
+### Fix
+* **ci:** Give PyPI 15 secs to expose new release ([`654b605`](https://github.com/MLAOPDX/monkeytale/commit/654b605d863175f42d0574438a97eadd897ce89d))
+
 ## v0.2.10 (2022-06-11)
 ### Fix
 * **ci:** Undo forced bug ([`cf99df7`](https://github.com/MLAOPDX/monkeytale/commit/cf99df7d2a910b695781711e3f750159c5b83c1b))

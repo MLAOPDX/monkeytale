@@ -1,4 +1,4 @@
-# Monkeytale v0.2.10
+# Monkeytale v0.2.11
 
 > "The book is a program." - [Matthew Butterick](https://docs.racket-lang.org/pollen/big-picture.html)
 
