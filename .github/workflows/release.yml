@@ -110,6 +110,7 @@ jobs:
         run: |
           pdm --version
           pdm init -n
+          sleep 15
           pdm add monkeytale
       - name: Check Monkeytale version
         run: |
