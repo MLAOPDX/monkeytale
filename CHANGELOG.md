@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.2.10 (2022-06-11)
+### Fix
+* **ci:** Undo forced bug ([`cf99df7`](https://github.com/MLAOPDX/monkeytale/commit/cf99df7d2a910b695781711e3f750159c5b83c1b))
+
 ## v0.2.9 (2022-06-09)
 ### Fix
 * **ci:** Capture output ([`1e55621`](https://github.com/MLAOPDX/monkeytale/commit/1e5562189343073134d3d7fbc9958ae5896b8e0c))
