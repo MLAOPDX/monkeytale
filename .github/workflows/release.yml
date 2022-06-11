@@ -75,7 +75,7 @@ jobs:
       - name: Record version
         run: |
           mkdir -p artifacts/Deploy
-          semantic-release --current print-version awk '{print $1}' > artifacts/Deploy/semver
+          semantic-release --current print-version | awk '{print $1}' > artifacts/Deploy/semver
       - uses: actions/upload-artifact@v3
         with:
           name: Deploy
