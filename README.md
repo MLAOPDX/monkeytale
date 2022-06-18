@@ -26,10 +26,9 @@ To stay honest in the application of these principles, here's a useful bit to ke
 
 > Special cases aren't special enough to break the rules, although practicality beats purity. - from [The Zen of Python](https://peps.python.org/pep-0020/) by Tim Peters
 
-- **The book is a program**</br>Monkeytale lives within your manuscript, within your notes, where you work.
+- **The book is a program.**</br>Monkeytale lives within your manuscript, within your notes, where you work.
 - **Don't opine. Document.**</br>Monkeytale does not give advice on how to improve your writing. It's job is to collects information about your writing, so you can decide if and where work is needed.
-- **Simplicity**</br>Monkeytale has a minimal syntax and no configuration.
-- **Durability**</br>Monkeytale uses flat text files.
+- **Keeping it simple makes it durable.**</br>Monkeytale has a minimal syntax, no configuration, and uses flat text files.
 
 ## Planned Functionality
 - Compose multiple narratives by (re-)using story components
