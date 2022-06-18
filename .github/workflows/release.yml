@@ -80,7 +80,7 @@ jobs:
         with:
           name: Deploy
           path: artifacts/Deploy/*
-          retention-days: 1 # Do not waste space indefinitely
+          retention-days: 7 # Do not waste space indefinitely
 
   # Confirm deployment to PyPI was successful
   TestDeploy:
