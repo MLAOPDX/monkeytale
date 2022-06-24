@@ -43,7 +43,7 @@ jobs:
           pdm run bandit --version
           pdm run bandit --recursive --skip B101 -x ./tests -x ./__pypackages__ .
       - name: Export PDM config to Poetry for Snyk to read
-        run: pdm export -f poetry
+        run: pdm export -f requirements > requirements.txt
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/python@master
         env:
