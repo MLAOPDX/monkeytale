@@ -1,13 +1,13 @@
-# Monkeytale
 [![PyPI Version](https://img.shields.io/pypi/v/monkeytale.svg?style=for-the-badge)](https://pypi.org/project/monkeytale)
 [![License](https://img.shields.io/github/license/MLAOPDX/monkeytale.svg?style=for-the-badge)](/LICENSE.md)
-
 [![Issues](https://img.shields.io/github/issues/MLAOPDX/monkeytale.svg?style=for-the-badge)](../../issues)
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/github/MLAOPDX/monkeytale?style=for-the-badge)](https://lgtm.com/projects/g/MLAOPDX/monkeytale/context:python)
 
+# Monkeytale
+
 > "The book is a program." - from [Pollen](https://docs.racket-lang.org/pollen/big-picture.html) by Matthew Butterick
 
-Monkeytale is a markup language for documenting and composing a story world and its novels. I am building this language to improve insight into my own writing.
+Monkeytale is a markup language for documenting and composing a story world and its novels. I am building this language to improve insight into my own writing and to learn more about software development.
 
 ## Design Principles
 
@@ -22,14 +22,14 @@ To stay honest in the application of these principles, here's a useful bit to ke
 ## Planned Functionality
 
 ### Monkeytale
-This will be the true Monkeytale functionality, the result of which is exposed to the plugins, for them to generate different outputs.
+This will be the true Monkeytale functionality, the result of which is exposed to the plugins to render different outputs.
 - Compose multiple narratives by (re-)using story components
 - Derive story structure from story components and their content
 - Provide plugin mount point for generation of documents from story structure extracted by Monkeytale
 - Execute from continuous integration server
 
 ### Plugin
-The intent is that anyone could write a plugin and make it available through PyPI and Monkeytale could make use of it. How to tell Monkeytale which plugins to use without configuration will be a challenge.
+Anyone could write a plugin and make it available through PyPI and Monkeytale could make use of it. How Monkeytale knows which plugins to use without configuration remains a challenge to be conquered.
 
 - Navigate to any named story component
 - Generate Markdown of each manuscript
@@ -56,15 +56,14 @@ The intent is that anyone could write a plugin and make it available through PyP
 
 ## Development Progress
 
+[![GitHub top language](https://img.shields.io/github/languages/top/MLAOPDX/monkeytale.svg?style=for-the-badge)](../../)
+[![https://img.shields.io/pypi/pyversions/monkeytale?style=for-the-badge](https://img.shields.io/pypi/pyversions/monkeytale?style=for-the-badge)](https://pypi.org/project/monkeytale)
 [![Last commit](https://img.shields.io/github/last-commit/MLAOPDX/monkeytale.svg?style=for-the-badge)](../../commits/master)
 [![Commit activity](https://img.shields.io/github/commit-activity/m/MLAOPDX/monkeytale.svg?style=for-the-badge)](../../commits/master)
-[![https://img.shields.io/pypi/pyversions/monkeytale?style=for-the-badge](https://img.shields.io/pypi/pyversions/monkeytale?style=for-the-badge)](https://pypi.org/project/monkeytale)
-[![GitHub top language](https://img.shields.io/github/languages/top/MLAOPDX/monkeytale.svg?style=for-the-badge)](../../)
-
 [![PyPI Downloads](https://img.shields.io/pypi/dm/monkeytale.svg?style=for-the-badge)](https://pypistats.org/packages/licensecheck)
 [![PyPI Total Downloads](https://img.shields.io/badge/dynamic/json?style=for-the-badge&label=total%20downloads&query=%24.total_downloads&url=https%3A%2F%2Fapi.pepy.tech%2Fapi%2Fprojects%2Fmonkeytale)](https://pepy.tech/project/monkeytale)
 
-Monkeytale is developed in spare time and uses [Semantic Versioning](https://semver.org/) and [Semantic Release](https://pypi.org/project/python-semantic-release/) to track its, equally spare, progress.
+Monkeytale is developed in my spare time and uses [Semantic Versioning](https://semver.org/) and [Semantic Release](https://pypi.org/project/python-semantic-release/) to track its, equally spare, progress.
 
 As per Semantic Versioning: "Major version zero (0.y.z) is for initial development. Anything MAY change at any time. The public API SHOULD NOT be considered stable."
 
