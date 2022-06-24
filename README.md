@@ -1,8 +1,9 @@
-# Monkeytale v0.2.11
-
-[![License](https://img.shields.io/github/license/MLAOPDX/monkeytale.svg?style=for-the-badge)](/LICENSE.md)
+# Monkeytale
 [![PyPI Version](https://img.shields.io/pypi/v/monkeytale.svg?style=for-the-badge)](https://pypi.org/project/monkeytale)
+[![License](https://img.shields.io/github/license/MLAOPDX/monkeytale.svg?style=for-the-badge)](/LICENSE.md)
+
 [![Issues](https://img.shields.io/github/issues/MLAOPDX/monkeytale.svg?style=for-the-badge)](../../issues)
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/github/MLAOPDX/monkeytale?style=for-the-badge)](https://lgtm.com/projects/g/MLAOPDX/monkeytale/context:python)
 
 > "The book is a program." - from [Pollen](https://docs.racket-lang.org/pollen/big-picture.html) by Matthew Butterick
 

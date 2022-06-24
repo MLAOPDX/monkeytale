@@ -72,7 +72,6 @@ major_on_zero = false # Version 0 allows breaking changes without bumping major 
 repository = "testpypi" # Default to the safety of a test environment
 upload_to_release = true # Create Github releases
 upload_to_repository = true # Publish to artifact repository
-version_pattern = ["README.md:# Monkeytale v{version}"]
 version_variable = [
     "monkeytale/__init__.py:__version__",
     "pyproject.toml:version",
