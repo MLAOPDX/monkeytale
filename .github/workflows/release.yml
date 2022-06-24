@@ -43,6 +43,7 @@ jobs:
           pdm run bandit --version
           pdm run bandit --recursive --skip B101 -x ./tests -x ./__pypackages__ .
       - name: Run Snyk to check for vulnerabilities
+        run: pdm export -f poetry
         uses: snyk/actions/python@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
