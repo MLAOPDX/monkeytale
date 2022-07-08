@@ -1,11 +1,12 @@
 [![PyPI Version](https://img.shields.io/pypi/v/monkeytale.svg?style=for-the-badge)](https://pypi.org/project/monkeytale)
-[![License](https://img.shields.io/github/license/MLAOPDX/monkeytale.svg?style=for-the-badge)](/LICENSE.md)
-[![Issues](https://img.shields.io/github/issues/MLAOPDX/monkeytale.svg?style=for-the-badge)](../../issues)
+[![Release Date](https://img.shields.io/github/release-date/MLAOPDX/monkeytale?style=for-the-badge)](https://github.com/MLAOPDX/monkeytale/releases)
+[![License](https://img.shields.io/github/license/MLAOPDX/monkeytale.svg?style=for-the-badge)](https://github.com/MLAOPDX/monkeytale/blob/main/LICENSE)
+</br>[![Issues](https://img.shields.io/github/issues/MLAOPDX/monkeytale.svg?style=for-the-badge)](https://github.com/MLAOPDX/monkeytale/issues)
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/github/MLAOPDX/monkeytale?style=for-the-badge)](https://lgtm.com/projects/g/MLAOPDX/monkeytale/context:python)
 
 # Monkeytale
 
-> "The book is a program." - from [Pollen](https://docs.racket-lang.org/pollen/big-picture.html) by Matthew Butterick
+> "The book is a program." from [Pollen](https://docs.racket-lang.org/pollen/big-picture.html) by Matthew Butterick
 
 Monkeytale is a markup language for documenting and composing a story world and its novels. I am building this language to improve insight into my own writing and to learn more about software development.
 
@@ -13,16 +14,18 @@ Monkeytale is a markup language for documenting and composing a story world and 
 
 To stay honest in the application of these principles, here's a useful bit to keep in mind:
 
-> Special cases aren't special enough to break the rules, although practicality beats purity. - from [The Zen of Python](https://peps.python.org/pep-0020/) by Tim Peters
+> "Special cases aren't special enough to break the rules, although practicality beats purity." from [The Zen of Python](https://peps.python.org/pep-0020/) by Tim Peters
 
 - **The book is a program.**</br>Monkeytale lives within your manuscript, within your notes, where you work.
-- **Don't opine. Document.**</br>Monkeytale does not give advice on how to improve your writing. It's job is to collects information about your writing, so you can decide if and where work is needed.
+- **Document what is there. Plugin your own opinion.**</br>Monkeytale does not give advice on how to improve your writing. It's job is to collects information about your writing, so plugins can decide how to support your writing.
 - **Keeping it simple makes it durable.**</br>Monkeytale has a minimal syntax, no configuration, and uses flat text files.
 
 ## Planned Functionality
 
+As the second principle indicates, Monkeytale functionality comes in two parts. The core functionality documents as much as possible of what has been written. The second, through plugins, reports on that documented material.
+
 ### Monkeytale
-This will be the true Monkeytale functionality, the result of which is exposed to the plugins to render different outputs.
+This will be core Monkeytale functionality, the result of which is exposed to the plugins to render different outputs.
 - Compose multiple narratives by (re-)using story components
 - Derive story structure from story components and their content
 - Provide plugin mount point for generation of documents from story structure extracted by Monkeytale
@@ -31,10 +34,10 @@ This will be the true Monkeytale functionality, the result of which is exposed t
 ### Plugin
 Anyone could write a plugin and make it available through PyPI and Monkeytale could make use of it. How Monkeytale knows which plugins to use without configuration remains a challenge to be conquered.
 
-- Navigate to any named story component
+- Generate ToDoTree configuration in .vscode/settings.json to help navigate story structure
 - Generate Markdown of each manuscript
 - Generate flow chart of scenes across PoV characters for each manuscript
-- Generate Markdown for all characters
+- Generate Markdown of backstory
 
 ## Dismissed Functionality
 - Advice on how to improve or correct the writing
