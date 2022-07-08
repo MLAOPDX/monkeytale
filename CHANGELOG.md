@@ -2,6 +2,17 @@
 
 <!--next-version-placeholder-->
 
+## v0.2.12 (2022-07-08)
+### Fix
+* **log:** Switch to Eliot logging ([`fde31a0`](https://github.com/MLAOPDX/monkeytale/commit/fde31a07e603310c0641633d66530a9f6dc47122))
+
+### Documentation
+* **README:** Restate goal ([`275328f`](https://github.com/MLAOPDX/monkeytale/commit/275328f8632c17ccf72c01385b494ac7e5ed3eaf))
+* **README:** Add badges, remove semver ([`a605933`](https://github.com/MLAOPDX/monkeytale/commit/a605933bee7cab442d0a525a029736e50962a48c))
+* **readme:** Whittle down to three princples ([`63ca3a0`](https://github.com/MLAOPDX/monkeytale/commit/63ca3a076f14536ed0cf5c484427a1471fcf434e))
+* **readme:** Tweak design principles ([`53b8f4a`](https://github.com/MLAOPDX/monkeytale/commit/53b8f4a834da3c7c51dd2d90d2fcfbc8f569d9e6))
+* **readme:** Make public, clean-up, and badges ([`99cbadc`](https://github.com/MLAOPDX/monkeytale/commit/99cbadcd6a9b794844a07a69b3e81170b141c0b5))
+
 ## v0.2.11 (2022-06-11)
 ### Fix
 * **ci:** Give PyPI 15 secs to expose new release ([`654b605`](https://github.com/MLAOPDX/monkeytale/commit/654b605d863175f42d0574438a97eadd897ce89d))
