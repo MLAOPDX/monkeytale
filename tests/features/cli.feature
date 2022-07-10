@@ -15,3 +15,9 @@ Feature: Monkeytale Command Line Interface
             | COMMAND    | OPTION    |
             | monkeytale | --version |
             | @          | --version |
+
+    Scenario: Monkeytale log
+        Given Monkeytale is installed
+        When Monkeytale is executed using monkeytale with None
+        Then Monkeytale will complete successfully
+        And Monkeytale will have produced a log file

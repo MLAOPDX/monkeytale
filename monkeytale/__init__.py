@@ -1,4 +1,7 @@
 import click
+from eliot import start_task
+
+from .file_management import initialize_build_directory, start_log
 
 __version__ = "0.2.12"
 
@@ -6,7 +9,9 @@ __version__ = "0.2.12"
 @click.command()
 @click.version_option(version=__version__)
 def cli():
-    click.echo(f"{__file__}!")
+    start_log()
+    with start_task(action_type="MonkeytaleBuild") as task:
+        initialize_build_directory()
 
 
 if __name__ == "__main__":
