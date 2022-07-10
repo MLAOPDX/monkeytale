@@ -4,6 +4,8 @@
             "source.organizeImports": true
         }
     },
+    "coverage-gutters.customizable.context-menu": false,
+    "debug.terminal.clearBeforeReusing": true,
     "editor.foldingImportsByDefault": true,
     "editor.fontFamily": "'Triplicate T3c', Menlo, Monaco, 'Courier New', monospace",
     "editor.fontSize": 16,
@@ -26,30 +28,38 @@
     "git.enableSmartCommit": true,
     "git.fetchOnPull": true,
     "git.followTagsWhenSync": true,
-    "git.showPushSuccessNotification": true,
     "git.mergeEditor": true,
+    "git.showPushSuccessNotification": true,
+    "koverage.coverageFileNames": [
+        "cov.xml"
+    ],
+    "koverage.coverageFilePaths": [
+        "tests"
+    ],
+    "koverage.lowCoverageThreshold": 80,
+    "koverage.sufficientCoverageThreshold": 90,
     "markdown-preview-enhanced.breakOnSingleNewLine": false,
+    "markdown-preview-enhanced.enableCriticMarkupSyntax": true,
     "markdown-preview-enhanced.enableExtendedTableSyntax": true,
     "markdown-preview-enhanced.enableTypographer": true,
     "markdown-preview-enhanced.frontMatterRenderingOption": "table",
     "markdown-preview-enhanced.latexEngine": "prince",
-    "markdown-preview-enhanced.enableCriticMarkupSyntax": true,
     "merge-conflict.autoNavigateNextConflict.enabled": true,
     "notebook.output.textLineLimit": 500,
     "python.defaultInterpreterPath": "",
     "python.formatting.blackPath": "black",
     "python.formatting.provider": "black",
+    "python.languageServer": "Pylance",
     "python.linting.enabled": true,
     "python.sortImports.args": [
         "--profile=black"
     ],
-    "python.testing.autoTestDiscoverOnSaveEnabled": true,
+    "python.testing.autoTestDiscoverOnSaveEnabled": false,
     "python.testing.pytestEnabled": true,
     "python.testing.pytestPath": "pytest",
     "python.testing.unittestEnabled": false,
     "scm.diffDecorationsGutterVisibility": "hover",
-    "terminal.integrated.shellIntegration.enabled": false,
+    "terminal.integrated.shellIntegration.enabled": true,
     "window.commandCenter": true,
-    "workbench.editor.closeOnFileDelete": true,
-    "debug.terminal.clearBeforeReusing": true
+    "workbench.editor.closeOnFileDelete": true
 }
