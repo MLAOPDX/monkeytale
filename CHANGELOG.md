@@ -2,6 +2,13 @@
 
 <!--next-version-placeholder-->
 
+## v0.3.0 (2022-07-10)
+### Feature
+* **log:** Add logging and build directory ([`2b7a8ae`](https://github.com/MLAOPDX/monkeytale/commit/2b7a8ae1bf20c6c2b638a6d6d6b01595117529ca))
+
+### Documentation
+* **README:** Clarify scope ([`071da8c`](https://github.com/MLAOPDX/monkeytale/commit/071da8c911e4c3ca55e08f66f97c0decdd92a5bd))
+
 ## v0.2.12 (2022-07-08)
 ### Fix
 * **log:** Switch to Eliot logging ([`fde31a0`](https://github.com/MLAOPDX/monkeytale/commit/fde31a07e603310c0641633d66530a9f6dc47122))
