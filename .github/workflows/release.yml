@@ -61,10 +61,14 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0 # Pull history for semantic versioning from commit messages
-      - name: Install Python
-        uses: actions/setup-python@v2
+      - name: Install PDM
+        uses: pdm-project/setup-pdm@main
         with:
-          python-version: "3.10"
+          python-version: "3.10" # Same as actions/setup-python
+          architecture: x64 # Same as actions/setup-python
+          # version: 1.4.0 # The version of PDM to install. Leave empty to use latest from PyPI
+          prerelease: false # Allow prereleases
+          enable-pep582: true # Enable PEP 582 globally
       - name: Install Python Semantic Release
         run: |
           pip install python-semantic-release
@@ -72,7 +76,7 @@ jobs:
           git config user.email semantic-release@dwlib.com
       - name: Publish application to pypi.org
         run: semantic-release publish -D repository=pypi
-      - name: Record version
+      - name: Record version as artifact
         run: |
           mkdir -p artifacts/Deploy
           semantic-release --current print-version | awk '{print $1}' > artifacts/Deploy/semver
