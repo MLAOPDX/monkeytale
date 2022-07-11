@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.3.2 (2022-07-11)
+### Fix
+* **ci:** Install packaging at CI time ([`17b664e`](https://github.com/MLAOPDX/monkeytale/commit/17b664ec48137824b0e9dbf141f14c3a24f3a0f3))
+
 ## v0.3.1 (2022-07-11)
 ### Fix
 * **ci:** Add packaging dependency ([`45e9f6c`](https://github.com/MLAOPDX/monkeytale/commit/45e9f6c60189d51509f53a1ee3b8b0ea393a913d))
