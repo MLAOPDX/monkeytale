@@ -3,16 +3,12 @@
 # See https://www.python.org/dev/peps/pep-0621/
 authors = [{ name = "Monkeytale", email = "monkeytale@dwlib.com" }]
 requires-python = ">=3.10"
-dependencies = [
-    "click>=8.0.0",
-    "eliot>=1.14.0",
-    "packaging>=21.3",
-    # "identify>=2.5.0",
-    # "NRCLex>=3.0.0",
-    # "pendulum>=2.1.2",
-    # "textblob>=0.17.1",
-    # "textX>=3.0.0",
-]
+dependencies = ["click>=8.0.0", "eliot>=1.14.0"]
+# "identify>=2.5.0",
+# "NRCLex>=3.0.0",
+# "pendulum>=2.1.2",
+# "textblob>=0.17.1",
+# "textX>=3.0.0",
 name = "monkeytale"
 version = "0.3.0"
 description = "An opinionated markup language for composing, documenting, and visualizing a novel."

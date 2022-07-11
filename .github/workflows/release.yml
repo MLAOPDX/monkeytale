@@ -71,6 +71,7 @@ jobs:
           enable-pep582: true # Enable PEP 582 globally
       - name: Install Python Semantic Release
         run: |
+          pip install packaging
           pip install python-semantic-release
           git config user.name semantic-release
           git config user.email semantic-release@dwlib.com
