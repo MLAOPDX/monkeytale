@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.3.1 (2022-07-11)
+### Fix
+* **ci:** Add packaging dependency ([`45e9f6c`](https://github.com/MLAOPDX/monkeytale/commit/45e9f6c60189d51509f53a1ee3b8b0ea393a913d))
+
 ## v0.3.0 (2022-07-10)
 ### Feature
 * **log:** Add logging and build directory ([`2b7a8ae`](https://github.com/MLAOPDX/monkeytale/commit/2b7a8ae1bf20c6c2b638a6d6d6b01595117529ca))

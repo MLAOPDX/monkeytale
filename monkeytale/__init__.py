@@ -3,7 +3,7 @@ from eliot import start_task
 
 from .file_management import initialize_build_directory, start_log
 
-__version__ = "0.3.0"
+__version__ = "0.3.1"
 
 
 @click.command()
