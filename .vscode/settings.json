@@ -4,6 +4,10 @@
             "source.organizeImports": true
         }
     },
+    "cSpell.words": [
+        "Butterick",
+        "Fuggly's"
+    ],
     "coverage-gutters.customizable.context-menu": false,
     "debug.terminal.clearBeforeReusing": true,
     "editor.foldingImportsByDefault": true,
@@ -16,6 +20,7 @@
         "**/.coverage*": true,
         "**/.hypothesis": true,
         "**/.ipynb_checkpoints": true,
+        "**/.pdm.toml": true,
         "**/.pytest_cache": true,
         "**/__pycache__": true,
         "**/__pypackages__": true,
