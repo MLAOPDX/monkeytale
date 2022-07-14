@@ -45,8 +45,8 @@ Assemble characters, objects, settings, and concepts for the story world into a 
 Better explained with an example:
 ```mermaid
 flowchart TB
-    BEGIN[/"BEGIN"\]
-    END[\END/]
+    BEGIN[/"Manuscript"\]
+    END[\Manuscript/]
 
     subgraph PoV1 [Protagonist]
         SN2(["SCENE_NAME\n(setting)\n\nScene Outline limited to a certain\nnumber of  characters..."])
