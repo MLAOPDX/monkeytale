@@ -1,7 +1,10 @@
 [![PyPI Version](https://img.shields.io/pypi/v/monkeytale.svg?style=for-the-badge)](https://pypi.org/project/monkeytale)
 [![Release Date](https://img.shields.io/github/release-date/MLAOPDX/monkeytale?style=for-the-badge)](https://github.com/MLAOPDX/monkeytale/releases)
 [![License](https://img.shields.io/github/license/MLAOPDX/monkeytale.svg?style=for-the-badge)](https://github.com/MLAOPDX/monkeytale/blob/main/LICENSE)
-</br>[![Issues](https://img.shields.io/github/issues/MLAOPDX/monkeytale.svg?style=for-the-badge)](https://github.com/MLAOPDX/monkeytale/issues)
+
+[![Issues](https://img.shields.io/github/issues/MLAOPDX/monkeytale.svg?style=for-the-badge)](https://github.com/MLAOPDX/monkeytale/issues)
+[![Pull requests](https://img.shields.io/github/issues-pr/MLAOPDX/monkeytale?style=for-the-badge)](https://github.com/MLAOPDX/monkeytale/pulls)
+[![Code Quality Alerts](https://img.shields.io/lgtm/alerts/github/MLAOPDX/monkeytale?style=for-the-badge)](https://lgtm.com/projects/g/MLAOPDX/monkeytale/alerts/?mode=list)
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/github/MLAOPDX/monkeytale?style=for-the-badge)](https://lgtm.com/projects/g/MLAOPDX/monkeytale/context:python)
 
 # Monkeytale
@@ -17,33 +20,62 @@ To stay honest in the application of these principles, here's a useful bit to ke
 > "Special cases aren't special enough to break the rules, although practicality beats purity." from [The Zen of Python](https://peps.python.org/pep-0020/) by Tim Peters
 
 - **The book is a program.**</br>Monkeytale lives within your manuscript, within your notes, where you work.
-- **Document what is there. Plugin your own opinion.**</br>Monkeytale does not give advice on how to improve your writing. It's job is to collects information about your writing, so plugins can decide how to support your writing.
-- **Keeping it simple makes it durable.**</br>Monkeytale has a minimal syntax, no configuration, and uses flat text files.
+- **Document what is there. Plugin your view and opinion.**</br>Monkeytale does not give advice on how to improve the writing. Its job is to collect information about the writing, so that plugins can report on the information collected. Those plugins then compose, visualize, or opine on the writing. Or do something completely different.
+- **Keeping it simple makes it durable.**</br>Monkeytale has one command structure, no configuration, and uses flat text files.
 
 ## Planned Functionality
 
-As the second principle indicates, Monkeytale functionality comes in two parts. The core functionality documents as much as possible of what has been written. The second, through plugins, reports on that documented material.
+Monkeytale functionality comes in two parts. The core functionality documents as much as possible of what has been written. The second is plugins. Plugins use the collected writing data to add value.
 
 ### Monkeytale
-This will be core Monkeytale functionality, the result of which is exposed to the plugins to render different outputs.
+The core Monkeytale functionality encodes structure into your writing with a light syntax, so that plugins can render different insights and outputs.
 - Compose multiple narratives by (re-)using story components
-- Derive story structure from story components and their content
-- Provide plugin mount point for generation of documents from story structure extracted by Monkeytale
-- Execute from continuous integration server
+- Derive story structure from story components and their content. For example, why would you make notes on which characters participate in a scene and which characters are referenced? This is information Monkeytale can do for you with reasonable accuracy.
+- Provide plugin mount point for generation of documents from story structure extracted by Monkeytale, or anything else the plugin thinks would be of value.
+- Execute Monkeytale on continuous integration server.
 
 ### Plugin
-Anyone could write a plugin and make it available through PyPI and Monkeytale could make use of it. How Monkeytale knows which plugins to use without configuration remains a challenge to be conquered.
+Anyone can write a plugin. Monkeytale can make use of any plugin that is released on PyPI, the Python Package Index. The following plugins are intended to be created. The first three are so fundamental for any novel that they will be included with Monkeytale. All the others are intended to be independent packages.
 
-- Generate ToDoTree configuration in .vscode/settings.json to help navigate story structure
-- Generate Markdown of each manuscript
-- Generate flow chart of scenes across PoV characters for each manuscript
-- Generate Markdown of backstory
+1. **Generate Markdown of each manuscript**</br>
+Assemble parts, chapters, and scenes of a manuscript into a single document.
+2. **Generate Markdown for backstory components**</br>
+Assemble characters, objects, settings, and concepts for the story world into a single document.
+3. **Generate flow chart of scenes across PoV characters for each manuscript**</br>
+Better explained with an example:
+```mermaid
+flowchart TB
+    BEGIN[/"BEGIN"\]
+    END[\END/]
+
+    subgraph PoV1 [Protagonist]
+        SN2(["SCENE_NAME\n(setting)\n\nScene Outline limited to a certain\nnumber of  characters..."])
+        SN3([Scenename])
+        SN8([SceneName])
+    end
+
+    subgraph PoV2 [Antagonist]
+        SN4([SceneName])
+        SN6([SceneName])
+    end
+
+    BEGIN ====> SN2
+    
+    SN2 ==narrative\norder==> SN3 ==> SN4 ==> SN6 ==> SN8
+
+    SN8 ====> END
+    
+    SN2 -.non-narrative\nrelation.-> SN6
+    SN8 -.-> SN3
+```
+4. Generate ToDoTree configuration in .vscode/settings.json to help navigate story structure
+5. Generate import file(s) for Aeon Timeline software to help visualize a story world
 
 ## Dismissed Functionality
 - Advice on how to improve or correct the writing
-- Typography and formatting, other than emphasis (italics)
+- Typography and formatting, other than emphasis/thought (italics)
 - Tables of content and indexing
-- Project management and goal tracking (maybe when hard writing deadlines ever become a reality for me)
+- Goal tracking
 
 ## Design Decisions
 - [Python 3](https://www.python.org/) will be the programming language for Monkeytale and the hooks for any plugins that folks might want to build
@@ -52,12 +84,12 @@ Anyone could write a plugin and make it available through PyPI and Monkeytale co
 - Use .@ as the file extension to indicate Monkeytale files.
 - Single global namespace
 
-## My environment of choice
-- [Visual Studio Code](https://code.visualstudio.com/) (VSCode) will be the text editor of choice
-- [GruntFuggly's ToDoTree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree) extension for VS Code will be used to support navigation. Will need a plugin that updates ToDoTree configuration as needed.
-- [Markdown Preview Enhanced](https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced) extension for Markdown and Mermaid diagram display and conversion to docx using [PanDoc](https://pandoc.org/) and PDF using Safari.
+## ***My*** environment of choice
+- [Visual Studio Code](https://code.visualstudio.com/) (VSCode) as the text editor
+- [GruntFuggly's ToDoTree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree) VS-Code extension for VS Code to support navigation. Will need a plugin that keeps ToDoTree configuration up to date
+- [Markdown Preview Enhanced](https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced) VS-Code extension for Markdown and Mermaid diagram display and conversion to docx using [PanDoc](https://pandoc.org/) and PDF using browser
 
-## Development Progress
+## Development
 
 [![GitHub top language](https://img.shields.io/github/languages/top/MLAOPDX/monkeytale.svg?style=for-the-badge)](../../)
 [![https://img.shields.io/pypi/pyversions/monkeytale?style=for-the-badge](https://img.shields.io/pypi/pyversions/monkeytale?style=for-the-badge)](https://pypi.org/project/monkeytale)
