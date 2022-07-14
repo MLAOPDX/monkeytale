@@ -5,7 +5,7 @@ import monkeytale.file_management
 import pytest
 from devtools import debug
 from monkeytale import __version__
-from monkeytale.file_management import log_path
+from monkeytale.file_management import LOG_PATH
 from pytest_bdd import given, parsers, scenarios, then, when
 from sh import Command, ErrorReturnCode, grep, monkeytale, pdm, wc
 
@@ -55,5 +55,5 @@ def monkeytale_version(monkeytale_output):
 
 @then("Monkeytale will have produced a log file")
 def monkeytale_log():
-    assert log_path.is_file()
-    assert re.search(r"MonkeytaleBuild", log_path.read_text())
+    assert LOG_PATH.is_file()
+    assert re.search(r"MonkeytaleBuild", LOG_PATH.read_text())

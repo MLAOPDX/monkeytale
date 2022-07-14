@@ -9,8 +9,8 @@ __version__ = "0.3.2"
 @click.command()
 @click.version_option(version=__version__)
 def cli():
-    start_log()
     with start_task(action_type="MonkeytaleBuild") as task:
+        start_log()
         initialize_build_directory()
 
 
