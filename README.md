@@ -50,7 +50,7 @@ flowchart TB
 
     subgraph PoV1 [Protagonist]
         SN2(["SCENE_NAME\n(setting)\n\nScene Outline limited to a certain\nnumber of  characters..."])
-        SN3([Scenename])
+        SN3([SceneName])
         SN8([SceneName])
     end
 
