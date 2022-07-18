@@ -18,83 +18,98 @@ env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
-  Test:
+  Test: # =====================================================================
     runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
 
     steps:
-      - name: Check-out
+      - name: Check-out repo
         uses: actions/checkout@v2
       - name: Install PDM
         uses: pdm-project/setup-pdm@main
         with:
-          python-version: "3.10" # Same as actions/setup-python
-          architecture: x64 # Same as actions/setup-python
-          # version: 1.4.0 # The version of PDM to install. Leave empty to use latest from PyPI
-          prerelease: false # Allow prereleases
-          enable-pep582: true # Enable PEP 582 globally
-      - name: Install application & dependencies
+          python-version: "3.10"
+          architecture: x64
+          prerelease: false
+          enable-pep582: true
+      - name: Install application with test dependencies
         run: |
           pdm --version
           pdm install -dG test
-      - name: Unit test application
+      - name: Run unit tests
         run: |
           pdm run pytest --version
           pdm run pytest -v ./tests
-      - name: Source code security analysis
+      - name: Run static code analysis
         run: |
           pdm run bandit --version
           pdm run bandit --recursive --skip B101 -x ./tests -x ./__pypackages__ .
 
-  Deploy:
+  Publish: # ==================================================================
     needs: [Test]
+
+    # Skip if Python Semantic Release's internal commit chore(release)
     if: github.event_name == 'push' && github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, 'chore(release)')
+
+    outputs:
+      before_release_version: ${{ steps.before_release.outputs.version }}
+      after_release_version: ${{ steps.after_release.outputs.version }}
 
     runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
+
     env:
-      # Set environment variables for Python Semantic Release to pick-up
+      # Secrets for Python Semantic Release
       REPOSITORY_USERNAME: __token__
       REPOSITORY_PASSWORD: ${{ secrets.PYPI_TOKEN }}
 
     steps:
-      - name: Check-out with history
+      # Full history of commit messages for semantic release
+      - name: Check out with full history to determine version bump
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0 # Pull history for semantic versioning from commit messages
+          fetch-depth: 0
       - name: Install PDM
         uses: pdm-project/setup-pdm@main
         with:
-          python-version: "3.10" # Same as actions/setup-python
-          architecture: x64 # Same as actions/setup-python
-          # version: 1.4.0 # The version of PDM to install. Leave empty to use latest from PyPI
-          prerelease: false # Allow prereleases
-          enable-pep582: true # Enable PEP 582 globally
+          python-version: "3.10"
+          architecture: x64
+          prerelease: false
+          enable-pep582: true
       - name: Install Python Semantic Release
         run: |
+          pdm --version
           pip install packaging
           pip install python-semantic-release
           git config user.name semantic-release
           git config user.email semantic-release@dwlib.com
-      - name: Publish application to pypi.org
-        run: semantic-release publish -D repository=pypi
-      - name: Record version as artifact
+      - name: Capture version before release
+        id: before_release
         run: |
-          mkdir -p artifacts/Deploy
-          semantic-release --current print-version | awk '{print $1}' > artifacts/Deploy/semver
-      - uses: actions/upload-artifact@v3
-        with:
-          name: Deploy
-          path: artifacts/Deploy/*
-          retention-days: 7 # Do not waste space indefinitely
+          version=$(semantic-release --current print-version | awk '{print $1}')
+          echo "::set-output name=version::$version"
+      - name: Report version before release
+          echo ${{steps.before_release.version}}
+      - name: Publish to PyPI if version bumps
+        run: semantic-release publish -D repository=pypi
+      - name: Capture version after release
+        id: after_release
+        run: |
+          version=$(semantic-release --current print-version | awk '{print $1}')
+          echo "::set-output name=version::$version"
+      - name: Report version after release
+          echo ${{steps.after_release.outputs.version}}
 
-  # Confirm deployment to PyPI was successful
+  # Confirm publishing to PyPI was successful
   TestDeploy:
-    needs: [Deploy]
+    needs: [Publish]
+
+    # Check if there was an actual deployment
+    if: needs.Publish.outputs.before_release_version != needs.Publish.outputs.after_release_version
 
     runs-on: ubuntu-latest
     defaults:
@@ -102,26 +117,25 @@ jobs:
         shell: bash
 
     steps:
-      - name: Give PyPI time to expose new version
+      - name: Wait for PyPI to expose new version
         run: sleep 15
       - name: Install PDM
         uses: pdm-project/setup-pdm@main
         with:
-          python-version: "3.10" # Same as actions/setup-python
-          architecture: x64 # Same as actions/setup-python
-          # version: 1.4.0 # Which PDM version, empty uses latest from PyPI
-          prerelease: false # Do not allow prerelease
-          enable-pep582: true # Enable PEP 582 globally
-      - name: Pull artifacts from Deploy
-        uses: actions/download-artifact@v3
-        with:
-          name: Deploy
-          path: artifacts/Deploy
-      - name: Compare expected and found versions
+          python-version: "3.10"
+          architecture: x64
+          prerelease: false
+          enable-pep582: true
+      - name: Install published version
         run: |
+          pdm --version
           pdm init -n
           pdm add monkeytale
-          mkdir -p artifacts/TestDeploy
-          pdm run @ --version | awk '{print $3}' > artifacts/TestDeploy/semver
-          echo "Expected v$(cat artifacts/Deploy/semver) and found v$(cat artifacts/TestDeploy/semver)"
-          diff artifacts/TestDeploy/semver artifacts/Deploy/semver
+      - name: Collect released and published versions
+        run: |
+          pdm run @ --version | awk '{print $3}' > published_version
+          echo ${{needs.Publish.outputs.after_release_version}} > released_version
+      - name: Compare released and published versions
+        run: |
+          echo "Expected v$(cat released_version) and found v$(published_version)"
+          diff released_version published_version
