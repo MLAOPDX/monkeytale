@@ -93,6 +93,7 @@ jobs:
           version=$(semantic-release --current print-version | awk '{print $1}')
           echo "::set-output name=version::$version"
       - name: Report version before release
+        run: |
           echo ${{steps.before_release.version}}
       - name: Publish to PyPI if version bumps
         run: semantic-release publish -D repository=pypi
@@ -102,6 +103,7 @@ jobs:
           version=$(semantic-release --current print-version | awk '{print $1}')
           echo "::set-output name=version::$version"
       - name: Report version after release
+        run: |
           echo ${{steps.after_release.outputs.version}}
 
   # Confirm publishing to PyPI was successful
