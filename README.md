@@ -21,13 +21,13 @@ flowchart TB
     END[\"End Manuscript Title"/]
 
     subgraph PoV1 ["<b>@Protagonist"</b>]
-        SN2(["<b><u>The waves crumbled into a hiss</u></b>\n#setting\n\nA scene outline wrapped at a decent length\nas not to stretch the  Scene box too wide."])
+        SN2(["<b><u>The waves crumbled into a hiss</u></b>\n#Permiflange Coast\n\nA scene outline wrapped at a decent length\nas not to stretch the  Scene box too wide."])
         SN3([SceneName])
         SN8([SceneName])
     end
 
     subgraph PoV2 ["<b>@Antagonist</b>"]
-        SN4([<b><u>After the full moon shatters</u></b>\n#another_setting])
+        SN4([<b><u>After the full moon shatters</u></b>\n#Wooded lands])
         SN6([SceneName])
     end
 
