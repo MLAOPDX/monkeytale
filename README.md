@@ -13,6 +13,34 @@
 
 Monkeytale is a markup language for documenting and composing a story world and its novels. I am building this language to improve insight into my own writing and to learn more about software development.
 
+Monkeytale plugins will use the structured writing content to generate things like Word documents for editor submissions and Vellum imports. I also intend to create plugins that generate visualizations like these.
+
+```mermaid
+flowchart TB
+    BEGIN[/"Begin Manuscript Title"\]
+    END[\"End Manuscript Title"/]
+
+    subgraph PoV1 ["<b>@Protagonist"</b>]
+        SN2(["<b><u>The waves crumbled into a hiss</u></b>\n#setting\n\nA scene outline wrapped at a decent length\nas not to stretch the  Scene box too wide."])
+        SN3([SceneName])
+        SN8([SceneName])
+    end
+
+    subgraph PoV2 ["<b>@Antagonist</b>"]
+        SN4([<b><u>After the full moon shatters</u></b>\n#another_setting])
+        SN6([SceneName])
+    end
+
+    BEGIN ====> SN2
+    
+    SN2 ==narrative\norder==> SN3 ==> SN4 ==> SN6 ==> SN8
+
+    SN8 ====> END
+    
+    SN2 -.non-narrative\nrelation.-> SN6
+    SN8 -.-> SN3
+```
+
 ## Design Principles
 
 - The book is a program.
@@ -43,32 +71,6 @@ Monkeytale requires only the installation of git, has minimal configuration, and
 - [Python 3](https://www.python.org/) will be the programming language for Monkeytale and any plugins that folks might want to build
 - [Github Repo](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository) as the [quick start template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
 - [Github Actions](https://github.com/features/actions) as execution platform, so nothing will have to be installed on the user's system other than [Github Desktop](https://desktop.github.com/).
-
-```mermaid
-flowchart TB
-    BEGIN[/"Manuscript #1"\]
-    END[\Manuscript #1/]
-
-    subgraph PoV1 [Protagonist]
-        SN2(["SCENE_NAME\n(setting)\n\nScene Outline limited to a certain\nnumber of  characters..."])
-        SN3([SceneName])
-        SN8([SceneName])
-    end
-
-    subgraph PoV2 [Antagonist]
-        SN4([SceneName])
-        SN6([SceneName])
-    end
-
-    BEGIN ====> SN2
-    
-    SN2 ==narrative\norder==> SN3 ==> SN4 ==> SN6 ==> SN8
-
-    SN8 ====> END
-    
-    SN2 -.non-narrative\nrelation.-> SN6
-    SN8 -.-> SN3
-```
 
 ## Development
 
