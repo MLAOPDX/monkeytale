@@ -15,34 +15,35 @@ Monkeytale is a markup language for documenting and composing a story world and 
 
 ## Design Principles
 
-To stay honest in the application of these principles, here's a useful bit to keep in mind:
+- The book is a program.
+- Document for others to use.
+- Simplicity ensures durability.
 
-> "Special cases aren't special enough to break the rules, although practicality beats purity." from [The Zen of Python](https://peps.python.org/pep-0020/) by Tim Peters
+### The Book Is A Program
+Monkeytale lives where I write, in [Workflowy](https://workflowy.com), a multi-platform outliner. Monkeytale will process OPML exports of Workflowy content.
 
-- **The book is a program.**</br>Monkeytale lives within your manuscript, within your notes, where you work.
-- **Document what is there. Plugin your view and opinion.**</br>Monkeytale does not give advice on how to improve the writing. Its job is to collect information about the writing, so that plugins can report on the information collected. Those plugins then compose, visualize, or opine on the writing. Or do something completely different.
-- **Keeping it simple makes it durable.**</br>Monkeytale has one command structure, no configuration, and uses flat text files.
+### Document for others to use.
+Monkeytale only collects information about the writing, so that plugins can report on the information collected. Those plugins can compose, visualize, opine, or even rewrite your work.
 
-## Planned Functionality
+### Simplicity ensures durability.
+Monkeytale requires only the installation of git, has minimal configuration, and maximum extensibility. This makes changing Monkeytale functionality both more difficult and powerful.
 
-Monkeytale functionality comes in two parts. The core functionality documents as much as possible of what has been written. The second is plugins. Plugins use the collected writing data to add value.
+## 
+4. Generate ToDoTree configuration in .vscode/settings.json to help navigate story structure
+5. Generate import file(s) for Aeon Timeline software to help visualize a story world
 
-### Monkeytale
-The core Monkeytale functionality encodes structure into your writing with a light syntax, so that plugins can render different insights and outputs.
-- Compose multiple narratives by (re-)using story components
-- Derive story structure from story components and their content. For example, why would you make notes on which characters participate in a scene and which characters are referenced? This is information Monkeytale can do for you with reasonable accuracy.
-- Provide plugin mount point for generation of documents from story structure extracted by Monkeytale, or anything else the plugin thinks would be of value.
-- Execute Monkeytale on continuous integration server.
+## Dismissed Functionality
+- Advice on how to improve or correct the writing
+- Typography and formatting, other than emphasis/thought (italics)
+- Tables of content and indexing
+- Goal tracking
 
-### Plugin
-Anyone can write a plugin. Monkeytale can make use of any plugin that is released on PyPI, the Python Package Index. The following plugins are intended to be created. The first three are so fundamental for any novel that they will be included with Monkeytale. All the others are intended to be independent packages.
+## Design Decisions
+- [Workflowy](https://workflowy.com) as writing platform. The content used by Monkeytale will need to meet certain structural requirements, a template of which is [shared from Workflowy](https://workflowy.com/s/world-template-dupli/3Tj4vp9gsIXYGZaT).
+- [Python 3](https://www.python.org/) will be the programming language for Monkeytale and any plugins that folks might want to build
+- [Github Repo](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository) as the [quick start template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+- [Github Actions](https://github.com/features/actions) as execution platform, so nothing will have to be installed on the user's system other than [Github Desktop](https://desktop.github.com/).
 
-1. **Generate Markdown of each manuscript**</br>
-Assemble parts, chapters, and scenes of a manuscript into a single document.
-2. **Generate Markdown for backstory components**</br>
-Assemble characters, objects, settings, and concepts for the story world into a single document.
-3. **Generate flow chart of scenes across PoV characters for each manuscript**</br>
-Better explained with an example:
 ```mermaid
 flowchart TB
     BEGIN[/"Manuscript #1"\]
@@ -68,26 +69,6 @@ flowchart TB
     SN2 -.non-narrative\nrelation.-> SN6
     SN8 -.-> SN3
 ```
-4. Generate ToDoTree configuration in .vscode/settings.json to help navigate story structure
-5. Generate import file(s) for Aeon Timeline software to help visualize a story world
-
-## Dismissed Functionality
-- Advice on how to improve or correct the writing
-- Typography and formatting, other than emphasis/thought (italics)
-- Tables of content and indexing
-- Goal tracking
-
-## Design Decisions
-- [Python 3](https://www.python.org/) will be the programming language for Monkeytale and the hooks for any plugins that folks might want to build
-- [Github Actions](https://github.com/features/actions) using Linux as execution platform
-- [Github Repo Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) as the delivery system.
-- Use .@ as the file extension to indicate Monkeytale files.
-- Single global namespace
-
-## ***My*** environment of choice
-- [Visual Studio Code](https://code.visualstudio.com/) (VSCode) as the text editor
-- [GruntFuggly's ToDoTree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree) VS-Code extension for VS Code to support navigation. Will need a plugin that keeps ToDoTree configuration up to date
-- [Markdown Preview Enhanced](https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced) VS-Code extension for Markdown and Mermaid diagram display and conversion to docx using [PanDoc](https://pandoc.org/) and PDF using browser
 
 ## Development
 

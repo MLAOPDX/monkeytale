@@ -1,4 +1,3 @@
-@WIP
 Feature: Monkeytale Command Line Interface
 
     As a developer

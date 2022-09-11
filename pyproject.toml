@@ -11,7 +11,7 @@ dependencies = ["click>=8.0.0", "eliot>=1.14.0"]
 # "textX>=3.0.0",
 name = "monkeytale"
 version = "0.3.2"
-description = "An opinionated markup language for composing, documenting, and visualizing a novel."
+description = "An opinionated markup language for composing, documenting, and visualizing a novel outline."
 license = { text = "Unlicense" }
 readme = "README.md"
 keywords = [
