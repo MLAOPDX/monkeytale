@@ -9,68 +9,54 @@
 
 # Monkeytale
 
-> "The book is a program." from [Pollen](https://docs.racket-lang.org/pollen/big-picture.html) by Matthew Butterick
+> "The book is a program." --- [Pollen](https://docs.racket-lang.org/pollen/big-picture.html) by Matthew Butterick
 
-Monkeytale is a markup language for documenting and composing a story world and its novels. I am building this language to improve insight into my own writing and to learn more about software development.
+Monkeytale is a markup language for documenting and composing a story world and its novels. I am building it to improve insight into my own writing and to learn more about software development.
 
-Monkeytale plugins will use the structured writing content to generate things like Word documents for editor submissions and Vellum imports. I also intend to create plugins that generate visualizations like these.
+Plugins will use Monkeytale's structured writing content to generate things like Word documents for editor submissions or scene flows like this:
 
 ```mermaid
 flowchart TB
-    BEGIN[/"Begin Manuscript Title"\]
-    END[\"End Manuscript Title"/]
+    BEGIN[/"<b>MANUSCRIPT TITLE</b>"\]
+    END[\"<b>MANUSCRIPT TITLE</b>"/]
 
     subgraph PoV1 ["<b>@Protagonist"</b>]
-        SN2(["<b><u>The waves crumbled into a hiss</u></b>\n#PermiflangeCoast\n\nA scene outline wrapped at a decent length\nas not to stretch the  Scene box too wide."])
-        SN3([SceneName])
-        SN8([SceneName])
+        SN2(["<b><u>The crumbling wave</u></b>\n#PermiflangeCoast\n\nA scene outline wrapped at a decent length\nas not to stretch the Scene box too wide."])
+        SN3([<b><u>SceneName</u></b>])
+        SN8([<b><u>SceneName</u></b>])
     end
 
     subgraph PoV2 ["<b>@Antagonist</b>"]
-        SN4([<b><u>After the full moon shatters</u></b>\n#WoodedLands])
-        SN6([SceneName])
+        SN4([<b><u>After the full moon sinks</u></b>\n#WoodedLands])
+        SN6([<b><u>SceneName</u></b>])
     end
 
     BEGIN ====> SN2
     
-    SN2 ==narrative\norder==> SN3 ==> SN4 ==> SN6 ==> SN8
+    SN2 =="narrative\norder\n(time gap?)"==> SN3 ==> SN4 ==> SN6 ==> SN8
 
     SN8 ====> END
     
-    SN2 -.non-narrative\nrelation.-> SN6
-    SN8 -.-> SN3
+    SN2 -."non-narrative relation\nlike foreshadow".-> SN6
+    SN8 -."flashback".-> SN3
 ```
 
 ## Design Principles
 
-- The book is a program.
-- Document for others to use.
-- Simplicity ensures durability.
+- Derive as much as possible from the text itself before adding in syntax.
+- Document what is written, let plugins report on the structure and content, and then gather the results.
+- Set up and forget.
 
-### The Book Is A Program
-Monkeytale lives where I write, in [Workflowy](https://workflowy.com), a multi-platform outliner. Monkeytale will process OPML exports of Workflowy content.
+## Decisions
 
-### Document for others to use.
-Monkeytale only collects information about the writing, so that plugins can report on the information collected. Those plugins can compose, visualize, opine, or even rewrite your work.
+Monkeytale syntax lives in [Workflowy](https://workflowy.com), a multi-platform outliner. An OPML export of Workflowy content will be given to the Monkeytale parser, which in turn will pass the generated structure and content on to each installed plugin.
 
-### Simplicity ensures durability.
-Monkeytale requires only the installation of git, has minimal configuration, and maximum extensibility. This makes changing Monkeytale functionality both more difficult and powerful.
-
-## 
-4. Generate ToDoTree configuration in .vscode/settings.json to help navigate story structure
-5. Generate import file(s) for Aeon Timeline software to help visualize a story world
-
-## Dismissed Functionality
-- Advice on how to improve or correct the writing
-- Typography and formatting, other than emphasis/thought (italics)
-- Tables of content and indexing
-- Goal tracking
-
-## Design Decisions
-- [Workflowy](https://workflowy.com) as writing platform. The content used by Monkeytale will need to meet certain structural requirements, a template of which is [shared from Workflowy](https://workflowy.com/s/world-template-dupli/3Tj4vp9gsIXYGZaT).
-- [Python 3](https://www.python.org/) will be the programming language for Monkeytale and any plugins that folks might want to build
-- [Github Repo](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository) as the [quick start template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
-- [Github Actions](https://github.com/features/actions) as execution platform, so nothing will have to be installed on the user's system other than [Github Desktop](https://desktop.github.com/).
+- Monkeytale needs to work without installing any software on the user's system other than a browser, which is assumed to be already present.
+- [Workflowy](https://workflowy.com) as writing platform. Workflowy supports multi-platform, offline editing.
+- [Github](https://github.com) as the store for exported OPML and the associated Monkeytale plugin outputs. Github supports multi-platform offline storage to read or backup the Monkeytale plugin output.
+- [Github Actions](https://github.com/features/actions) as execution platform, so nothing will have to be installed on the user's system other than [Github Desktop](https://desktop.github.com/). There is no offline alternative to refresh the Monkeytale plugin output.
+- [Github Repo Templates](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository) as the [quick start template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+- [Python 3](https://www.python.org/) as the programming language for Monkeytale and any plugins that folks might want to build.
 
 ## Development
 
