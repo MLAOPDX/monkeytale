@@ -2,7 +2,7 @@ Feature: Monkeytale Command Line Interface
 
     As a developer
     I want to run Monkeytale
-    So that I can get debug information.
+    So that I can get debug information
 
     Scenario Outline: Monkeytale version
         Given Monkeytale is installed
