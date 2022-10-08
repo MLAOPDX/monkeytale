@@ -1,9 +1,14 @@
+from pathlib import Path
+
 import click
 from eliot import start_task
+from sh import pwd
 
 from .file_management import initialize_build_directory, start_log
 
 __version__ = "0.3.2"
+
+cwd = Path(pwd().strip("\n"))
 
 
 @click.command()

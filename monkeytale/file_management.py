@@ -19,7 +19,7 @@ class MonkeytaleJSONEncoder(EliotJSONEncoder):
         try:
             return EliotJSONEncoder.default(self, obj)
         except TypeError:
-            return "WARNING " + f"{obj=} is not JSON serializable"[4:]
+            return "REPR: " + f"{obj=}"[4:]
 
 
 @log_call
