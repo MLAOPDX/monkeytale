@@ -2,6 +2,20 @@
 
 <!--next-version-placeholder-->
 
+## v0.3.3 (2022-10-08)
+### Fix
+* **cwd:** Get execution location ([`0bd37f4`](https://github.com/MLAOPDX/monkeytale/commit/0bd37f401adeea8e46449cacd2f5e7d747bc254e))
+
+### Documentation
+* **README:** Update ([`69c982e`](https://github.com/MLAOPDX/monkeytale/commit/69c982e60d66eefcec2416a4eb839edf50563f7b))
+* **readme:** OPML markdown ([`7cd0385`](https://github.com/MLAOPDX/monkeytale/commit/7cd038580b329e4a7ac7fa1aba4b730682a6aa69))
+* **README:** Clean up visualizations ([`a5bfaff`](https://github.com/MLAOPDX/monkeytale/commit/a5bfaffbce89ceb42d2878184fe2bc49626be07c))
+* **README:** Visualization update ([`e8e4254`](https://github.com/MLAOPDX/monkeytale/commit/e8e4254f38f5ae004b7c8a4c701e30be975aa624))
+* **README:** Update scene graph requirements ([`e18e73c`](https://github.com/MLAOPDX/monkeytale/commit/e18e73c5c25f86b24adbb6640705889c8384511e))
+* **README:** Update scene graph ([`cc4db0a`](https://github.com/MLAOPDX/monkeytale/commit/cc4db0abf4a4a95e7c9f95a9b88227b3b5cabc76))
+* **README:** Correct typo ([`32f6e61`](https://github.com/MLAOPDX/monkeytale/commit/32f6e61947c4fa8bbefd7e993091517755096882))
+* **README:** Scope clarification ([`ea70707`](https://github.com/MLAOPDX/monkeytale/commit/ea707073fe7ea90f26550519e9e12ca419feac88))
+
 ## v0.3.2 (2022-07-11)
 ### Fix
 * **ci:** Install packaging at CI time ([`17b664e`](https://github.com/MLAOPDX/monkeytale/commit/17b664ec48137824b0e9dbf141f14c3a24f3a0f3))

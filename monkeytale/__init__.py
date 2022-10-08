@@ -6,7 +6,7 @@ from sh import pwd
 
 from .file_management import initialize_build_directory, start_log
 
-__version__ = "0.3.2"
+__version__ = "0.3.3"
 
 cwd = Path(pwd().strip("\n"))
 
