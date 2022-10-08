@@ -2,16 +2,11 @@
 [![Release Date](https://img.shields.io/github/release-date/MLAOPDX/monkeytale?style=for-the-badge)](https://github.com/MLAOPDX/monkeytale/releases)
 [![License](https://img.shields.io/github/license/MLAOPDX/monkeytale.svg?style=for-the-badge)](https://github.com/MLAOPDX/monkeytale/blob/main/LICENSE)
 
-[![Issues](https://img.shields.io/github/issues/MLAOPDX/monkeytale.svg?style=for-the-badge)](https://github.com/MLAOPDX/monkeytale/issues)
-[![Pull requests](https://img.shields.io/github/issues-pr/MLAOPDX/monkeytale?style=for-the-badge)](https://github.com/MLAOPDX/monkeytale/pulls)
-[![Code Quality Alerts](https://img.shields.io/lgtm/alerts/github/MLAOPDX/monkeytale?style=for-the-badge)](https://lgtm.com/projects/g/MLAOPDX/monkeytale/alerts/?mode=list)
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/github/MLAOPDX/monkeytale?style=for-the-badge)](https://lgtm.com/projects/g/MLAOPDX/monkeytale/context:python)
-
-# Monkeytale
+# MonkeyTale
 
 > "The book is a program." --- [Pollen](https://docs.racket-lang.org/pollen/big-picture.html) by Matthew Butterick
 
-Monkeytale is an OPML markdown language for documenting and composing a story world and its novels. It adds some syntax rules on top of [Workflowy](https://workflowy.com)'s OPML extract. From that it tries to crete the best machine-readable world and manuscript structures from which plugins can create output. These plugins can generate Word documents for editor submissions or scene flows, or whatever else someone comes up with. They can even change the structure.
+MonkeyTale is an OPML markdown language for documenting and composing a story world and its novels. It adds some syntax rules on top of [Workflowy](https://workflowy.com)'s OPML extract. From that it tries to crete the best machine-readable world and manuscript structures from which plugins can create output. These plugins can generate Word documents for editor submissions or scene flows, or whatever else someone comes up with. They can even change the structure.
 
 <!--
 ```mermaid
@@ -48,16 +43,18 @@ flowchart TB
 
 ## Interface Decisions
 
-Monkeytale syntax expects to live in [Workflowy](https://workflowy.com) as the writing platform and OPML source. Theoretically, any [OPML generating system](http://opml.org/compatibleApps.opml) could be used.
+MonkeyTale syntax expects to live in [Workflowy](https://workflowy.com) as the writing platform and OPML source. Theoretically, any [OPML generating system](http://opml.org/compatibleApps.opml) could be used.
 
-An OPML export will be given to the Monkeytale parser by committing it to a git repo. The parser will then pass the generated structure and content on to each available plugin, to do whatever it does.
+An OPML export will be given to the MonkeyTale parser by committing it to a git repo. The parser will then pass the generated structure and content on to each available plugin, to do whatever it does.
 
-Monkeytale will recognize the following structural block hierarchies:
+MonkeyTale will recognize the following structural block hierarchies:
 
 - Manuscript, Part, Chapter, Subheading, Scene, Quote, and Verse
 - Backstory, @Character, and #Setting
 
 Each block is an outline item, where each higher level block contains one or more outline line items itself. Block nesting can skip levels, for example a Manuscript could consist of only a single Paragraph.
+
+The character and setting are prefixed with @ and # respectively, two special markers in WorkFlowy making finding and filtering content much easier.
 
 The nesting chains look something like this:
 
@@ -130,30 +127,46 @@ flowchart TB
 
 All non-paragraph blocks are identified by starting with their block type followed by a colon. Anything starting with the first non-whitespace character following the colon is deemed the name of the block. Any child bullets underneath will be considered the content of the block. And so, "Manuscript: Ye Olde Booke. " would be interpreted as a manuscript block with "Ye Olde Booke." as its name.
 
-A paragraph block has no block type or name. Its text is the paragraph content itself.
+For header blocks, which includes quote and verse, the name is the header title. For the non-header block scene the name is considered to be an outline. A paragraph block has no block type or name. Its text is the paragraph content itself.
+
+In Workflowy each outline item---bullet---can have its own note. The notes of blocks have a special meaning for MonkeyTale. It is in these notes that five additional pieces of information can be written:
+
+1. Point-of-view character (PoV)
+2. Setting
+3. Time
+4. Relationships with other blocks
+5. Continuity notes
+
+While each item is optional, there are some requirements as to their order.
+
+The three anchoring items, PoV, setting and time, must reside on the first line, but within that line can be in any order. A line is defined as any text following a return/enter and ends in a return/enter.
+
+Following the anchors are relationships. Each relationship occupies a whole line holds a description of the relationship and a WorkFlowy link to the related block. The order of these two has meaning. The relationship is meant to be read as an English sentence where the current block is assumed on the opposite side of the description than the link. For example these links below, where ... represents the imagined current block:
+
+- [Linked block] foreshadows ...<br/>the direction is from link to current
+- ... foreshadows [Linked block]<br/>the direction is from current to link
+
+The first line that cannot be a relationship is that start of any continuity notes. This text continues until the end of the WorkFlowy note or until a line containing only "---" or "===" is encountered.
+
+Text beyond the "---" is reserved for future use. Text beyond "===" is ignored by MonkeyTale.
+
+### To-Dos
 
 ## Technology Decisions
 
-Monkeytale needs to work without installing any software on the user's system other than a browser, which is assumed to be already present.
+MonkeyTale needs to work without any software installed on the user's system other than a browser, which is assumed to be already present.
 
 - [Workflowy](https://workflowy.com) as writing platform. Workflowy supports multi-platform, offline editing.
-- [Github](https://github.com) as the store for exported OPML and the associated Monkeytale plugin outputs. Github supports multi-platform offline storage to read or backup the Monkeytale plugin output.
-- [Github Actions](https://github.com/features/actions) as execution platform, so nothing will have to be installed on the user's system other than [Github Desktop](https://desktop.github.com/). There is no offline alternative to refresh the Monkeytale plugin output.
+- [Github](https://github.com) as the store for exported OPML and the associated MonkeyTale plugin outputs. Github supports multi-platform offline storage to read or backup the MonkeyTale plugin output.
+- [Github Actions](https://github.com/features/actions) as execution platform, so nothing will have to be installed on the user's system other than [Github Desktop](https://desktop.github.com/). There is no offline alternative to refresh the MonkeyTale plugin output.
 - [Github Repo Templates](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository) as the [quick start template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
-- [Python 3](https://www.python.org/) as the programming language for Monkeytale and any plugins that folks might want to build.
+- [Python 3](https://www.python.org/) as the programming language for MonkeyTale and any plugins that folks might want to build.
 
 ## Development
 
-[![GitHub top language](https://img.shields.io/github/languages/top/MLAOPDX/monkeytale.svg?style=for-the-badge)](../../)
-[![https://img.shields.io/pypi/pyversions/monkeytale?style=for-the-badge](https://img.shields.io/pypi/pyversions/monkeytale?style=for-the-badge)](https://pypi.org/project/monkeytale)
-[![Last commit](https://img.shields.io/github/last-commit/MLAOPDX/monkeytale.svg?style=for-the-badge)](../../commits/master)
-[![Commit activity](https://img.shields.io/github/commit-activity/m/MLAOPDX/monkeytale.svg?style=for-the-badge)](../../commits/master)
-[![PyPI Downloads](https://img.shields.io/pypi/dm/monkeytale.svg?style=for-the-badge)](https://pypistats.org/packages/licensecheck)
-[![PyPI Total Downloads](https://img.shields.io/badge/dynamic/json?style=for-the-badge&label=total%20downloads&query=%24.total_downloads&url=https%3A%2F%2Fapi.pepy.tech%2Fapi%2Fprojects%2Fmonkeytale)](https://pepy.tech/project/monkeytale)
+I am building MonkeyTale to improve insight into my own writing and to learn more about software development.
 
-I am building Monkeytale to improve insight into my own writing and to learn more about software development.
-
-Monkeytale is developed in my spare time and uses [Semantic Versioning](https://semver.org/) and [Semantic Release](https://pypi.org/project/python-semantic-release/) to track its, equally spare, progress.
+MonkeyTale is developed in my spare time and uses [Semantic Versioning](https://semver.org/) and [Semantic Release](https://pypi.org/project/python-semantic-release/) to track its, equally spare, progress.
 
 As per Semantic Versioning: "Major version zero (0.y.z) is for initial development. Anything MAY change at any time. The public API SHOULD NOT be considered stable."
 
