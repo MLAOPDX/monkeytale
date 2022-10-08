@@ -3,7 +3,7 @@
 # See https://www.python.org/dev/peps/pep-0621/
 authors = [{ name = "Monkeytale", email = "monkeytale@dwlib.com" }]
 requires-python = ">=3.10"
-dependencies = ["click>=8.0.0", "eliot>=1.14.0"]
+dependencies = ["click>=8.0.0", "eliot>=1.14.0", "sh>=1.14.2"]
 # "identify>=2.5.0",
 # "NRCLex>=3.0.0",
 # "pendulum>=2.1.2",
@@ -62,7 +62,6 @@ test = [
     "pytest-bdd>=5.0.0",
     "pytest-cov>=3.0.0",
     "setuptools>=62.3.2",
-    "sh>=1.14.2",
 ]
 jupyter = ["jupyter>=1.0.0"]
 Deploy = []
