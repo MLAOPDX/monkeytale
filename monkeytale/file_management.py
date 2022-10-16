@@ -9,7 +9,6 @@ from eliot.json import EliotJSONEncoder
 SOURCE_PATH = Path(".")
 LOG_FILE = "monkeytale.log"
 BUILD_DIRECTORY = "build"
-SECRET = "fe539ed8-35e8-4e4f-be36-01265ad1ff93"  # nosec B105
 
 LOG_PATH = SOURCE_PATH / LOG_FILE
 BUILD_PATH = SOURCE_PATH / BUILD_DIRECTORY
