@@ -26,7 +26,7 @@ jobs:
 
     steps:
       - name: Check-out repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Install PDM
         uses: pdm-project/setup-pdm@main
         with:
@@ -70,7 +70,7 @@ jobs:
     steps:
       # Full history of commit messages for semantic release
       - name: Check out with full history to determine version bump
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Install PDM
@@ -91,7 +91,8 @@ jobs:
         id: before_release
         run: |
           version=$(semantic-release --current print-version | awk '{print $1}')
-          echo "::set-output name=version::$version"
+          echo "version=$version" >> $GITHUB_OUTPUT
+
       - name: Report version before release
         run: |
           echo ${{steps.before_release.outputs.version}}
@@ -101,7 +102,7 @@ jobs:
         id: after_release
         run: |
           version=$(semantic-release --current print-version | awk '{print $1}')
-          echo "::set-output name=version::$version"
+          echo "version=$version" >> $GITHUB_OUTPUT
       - name: Report version after release
         run: |
           echo ${{steps.after_release.outputs.version}}
