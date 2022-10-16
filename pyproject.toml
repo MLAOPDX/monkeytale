@@ -88,5 +88,5 @@ markers = ["WIP: Work In Progress"]
 
 [tool.black]
 target-version = ['py310']
-experimental-string-processing = true
+preview = true
 safe = true
