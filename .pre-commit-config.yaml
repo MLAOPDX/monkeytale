@@ -15,6 +15,7 @@ repos:
     rev: 22.10.0
     hooks:
       - id: black-jupyter
+        language_version: python3.10
   # Export requirements.txt
   - repo: https://github.com/pdm-project/pdm
     rev: 2.1.5
