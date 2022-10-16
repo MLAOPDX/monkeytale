@@ -1,0 +1,25 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.20.0
+    hooks:
+      # Sanity checks
+      - id: check-merge-conflict
+      - id: detect-private-key
+      # Check syntax of files
+      - id: check-json
+      - id: check-toml
+      - id: check-xml
+      - id: check-yaml
+  # Format Python code
+  - repo: https://github.com/psf/black
+    rev: 22.10.0
+    hooks:
+      - id: black
+  # Export requirements.txt
+  - repo: https://github.com/pdm-project/pdm
+    rev: 2.1.5
+    hooks:
+      - id: pdm-export
+        # command arguments, e.g.:
+        args: ["-o", "requirements.txt", "--without-hashes"]
+        files: ^pdm.lock$
