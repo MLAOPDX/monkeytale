@@ -23,14 +23,14 @@ class MonkeytaleJSONEncoder(EliotJSONEncoder):
             return "REPR: " + f"{o=}"[4:]
 
 
-@log_call  # noqa: F841
+@log_call  # noqa: NotCalledLocally
 def start_log() -> Path:
     # Always overwrite the log for each run
     to_file(LOG_PATH.open(mode="w"), encoder=MonkeytaleJSONEncoder)
     return LOG_PATH
 
 
-@log_call  # noqa: F841
+@log_call  # noqa: NotCalledLocally
 def initialize_build_directory() -> Path:
     # Build from scratch every time
     if BUILD_PATH.is_dir():

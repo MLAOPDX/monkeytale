@@ -9,7 +9,7 @@ from .file_management import start_log
 
 __version__ = "0.3.3"
 
-cwd = Path(pwd().strip("\n"))  # noqa: "pwd is a callable"
+cwd = Path(pwd().strip("\n"))  # noqa: IsCallable
 
 
 @click.command()
