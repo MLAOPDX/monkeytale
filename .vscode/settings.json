@@ -5,6 +5,7 @@
     "codeql",
     "commitizen",
     "Fuggly's",
+    "noqa",
     "outliner",
     "pyupgrade",
     "skjold",
