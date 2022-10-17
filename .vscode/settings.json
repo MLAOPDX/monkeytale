@@ -63,5 +63,14 @@
   "scm.diffDecorationsGutterVisibility": "hover",
   "terminal.integrated.shellIntegration.enabled": true,
   "window.commandCenter": true,
-  "workbench.editor.closeOnFileDelete": true
+  "workbench.editor.closeOnFileDelete": true,
+  "python.linting.prospectorEnabled": true,
+  "python.linting.prospectorArgs": [
+    "--with-tool",
+    "vulture",
+    "--with-tool",
+    "bandit"
+  ],
+  "python.linting.cwd": "",
+  "python.linting.prospectorPath": "pdm run prospector"
 }

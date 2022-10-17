@@ -14,13 +14,7 @@ version = "0.3.3"
 description = "An opinionated markup language, extending OPML, for composing and documenting a novel."
 license = { text = "Unlicense" }
 readme = "README.md"
-keywords = [
-    "novel",
-    "structure",
-    "composition",
-    "documentation",
-    "visualization",
-]
+keywords = ["novel", "structure", "composition", "documentation"]
 classifiers = [
     "Development Status :: 1 - Planning",
     "Intended Audience :: End Users/Desktop",
@@ -50,7 +44,7 @@ build-backend = "pdm.pep517.api"
 includes = ["monkeytale"]
 
 [tool.pdm.dev-dependencies]
-format = ["black[jupyter]>=22.3.0", "isort>=5.10.1"]
+format = ["black[jupyter]>=22.3.0"]
 # setuptools is needed to avoid missing module pkg_resources
 test = [
     "bandit>=1.7.4",
@@ -62,9 +56,9 @@ test = [
     "pytest-bdd>=5.0.0",
     "pytest-cov>=3.0.0",
     "setuptools>=62.3.2",
+    "prospector[with_bandit,with_vulture]>=1.7.7",
 ]
 jupyter = ["jupyter>=1.0.0"]
-Deploy = []
 
 [tool.semantic_release]
 branch = "main"
@@ -93,7 +87,7 @@ safe = true
 
 [tool.vulture]
 exclude = ["tests/"]
-min_confidence = 80
+min_confidence = 10
 paths = ["monkeytale"]
 sort_by_size = true
 verbose = true
