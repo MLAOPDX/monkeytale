@@ -40,12 +40,7 @@ jobs:
           pdm install -dG test
       - name: Run unit tests
         run: |
-          pdm run pytest --version
           pdm run pytest -v ./tests
-      - name: Run static code analysis
-        run: |
-          pdm run bandit --version
-          pdm run bandit --recursive --skip B101 -x ./tests -x ./__pypackages__ .
 
   Publish: # ==================================================================
     needs: [Test]
@@ -82,7 +77,6 @@ jobs:
           enable-pep582: true
       - name: Install Python Semantic Release
         run: |
-          pdm --version
           pip install packaging
           pip install python-semantic-release
           git config user.name semantic-release
@@ -121,7 +115,7 @@ jobs:
 
     steps:
       - name: Wait for PyPI to expose new version
-        run: sleep 15
+        run: sleep 30
       - name: Install PDM
         uses: pdm-project/setup-pdm@main
         with:
@@ -131,7 +125,6 @@ jobs:
           enable-pep582: true
       - name: Install published version
         run: |
-          pdm --version
           pdm init -n
           pdm add monkeytale
       - name: Collect released and published versions
