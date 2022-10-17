@@ -1,5 +1,5 @@
 repos:
-  # Integrity & syntax checks
+  # INTEGRITY & SYNTAX CHECKS
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
     hooks:
@@ -13,28 +13,36 @@ repos:
       - id: check-xml
       - id: check-yaml
 
-  # Static code analysis
+  # STATIC CODE ANALYSIS
+  # Dead code
+  - repo: https://github.com/jendrikseipp/vulture
+    rev: v2.6
+    hooks:
+      - id: vulture
+  # Best practices
   - repo: https://github.com/PyCQA/prospector
     rev: 1.7.7
     hooks:
       - id: prospector
+  # Security
   - repo: https://github.com/PyCQA/bandit
     rev: 1.7.4
     hooks:
       - id: bandit
+  # Secrets
   - repo: https://github.com/Yelp/detect-secrets
     rev: v1.4.0
     hooks:
       - id: detect-secrets
 
-  # Format Python code (incl. Jupyter notebooks)
+  # FORMAT PYTHON CODE (INCL. JUPYTER NOTEBOOKS)
   - repo: https://github.com/psf/black
     rev: 22.10.0
     hooks:
       - id: black-jupyter
         language_version: python3.10
 
-  # Export Python requirements.txt from pdm.lock
+  # EXPORT PYTHON REQUIREMENTS.TXT FROM PDM.LOCK
   - repo: https://github.com/pdm-project/pdm
     rev: 2.1.5
     hooks:
@@ -42,7 +50,7 @@ repos:
         args: [-o, requirements.txt, --without-hashes]
         files: ^pdm.lock$
 
-  # Vulnerability scan of dependencies
+  # VULNERABILITY SCAN OF DEPENDENCIES
   # Must follow PDM export so it can pick up the requirements.txt
   - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
     rev: v1.3.0
