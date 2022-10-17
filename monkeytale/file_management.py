@@ -1,9 +1,10 @@
 """Utilities to manage monkeytale file storage."""
-
 import shutil
 from pathlib import Path
 
-from eliot import current_action, log_call, to_file
+from eliot import current_action
+from eliot import log_call
+from eliot import to_file
 from eliot.json import EliotJSONEncoder
 
 SOURCE_PATH = Path(".")
