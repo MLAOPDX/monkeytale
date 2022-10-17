@@ -90,3 +90,12 @@ markers = ["WIP: Work In Progress"]
 target-version = ['py310']
 preview = true
 safe = true
+
+[tool.skjold]
+sources = ["github", "pyup", "gemnasium"] # Sources to check against.
+report_only = true                        # Report only, always exit with zero.
+report_format = 'json'                    # Output findings as `json`. Default is 'cli'.
+cache_dir = '.skjold_cache'               # Cache location (default: `~/.skjold/cache`).
+cache_expires = 86400                     # Cache max. age.
+ignore_file = '.skjoldignore'             # Ignorefile location (default `.skjoldignore`).
+verbose = true                            # Be verbose.
