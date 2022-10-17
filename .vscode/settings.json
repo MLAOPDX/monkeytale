@@ -1,9 +1,4 @@
 {
-  "[python]": {
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": true
-    }
-  },
   "cSpell.words": [
     "autofix",
     "Butterick",
