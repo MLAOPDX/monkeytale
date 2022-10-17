@@ -1,4 +1,12 @@
 repos:
+  # COMMIT MESSAGE CHECKS
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: master
+    hooks:
+      - id: commitizen
+      - id: commitizen-branch
+        stages: [push]
+
   # INTEGRITY & SYNTAX CHECKS
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
