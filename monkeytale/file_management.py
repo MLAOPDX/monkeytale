@@ -15,11 +15,11 @@ BUILD_PATH = SOURCE_PATH / BUILD_DIRECTORY
 
 
 class MonkeytaleJSONEncoder(EliotJSONEncoder):
-    def default(self, obj):
+    def default(self, o):
         try:
-            return EliotJSONEncoder.default(self, obj)
+            return EliotJSONEncoder.default(self, o)
         except TypeError:
-            return "REPR: " + f"{obj=}"[4:]
+            return "REPR: " + f"{o=}"[4:]
 
 
 @log_call
@@ -34,7 +34,7 @@ def initialize_build_directory():
     # Build from scratch every time
     if BUILD_PATH.is_dir():
         current_action().log(
-            message_type=f"Deleting previous build directory: '{BUILD_DIRECTORY}'",
+            message_type="Deleting previous build directory: '{BUILD_DIRECTORY}'",
             path=str(BUILD_PATH.resolve()),
         )
         shutil.rmtree(BUILD_PATH)
