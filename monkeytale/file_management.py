@@ -34,7 +34,7 @@ def initialize_build_directory():
     # Build from scratch every time
     if BUILD_PATH.is_dir():
         current_action().log(
-            message_type="Deleting previous build directory: '{BUILD_DIRECTORY}'",
+            message_type=f"Deleting previous build directory: '{BUILD_DIRECTORY}'",
             path=str(BUILD_PATH.resolve()),
         )
         shutil.rmtree(BUILD_PATH)
