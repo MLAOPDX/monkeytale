@@ -7,7 +7,7 @@ from eliot import log_call
 from eliot import to_file
 from eliot.json import EliotJSONEncoder
 
-SOURCE_PATH = Path(".")
+SOURCE_PATH = Path(".")  # noqa:
 LOG_FILE = "monkeytale.log"
 BUILD_DIRECTORY = "build"
 
