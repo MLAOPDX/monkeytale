@@ -13,6 +13,8 @@ BUILD_DIRECTORY = "build"
 LOG_PATH = SOURCE_PATH / LOG_FILE
 BUILD_PATH = SOURCE_PATH / BUILD_DIRECTORY
 
+# print("Dead code")
+
 
 class MonkeytaleJSONEncoder(EliotJSONEncoder):
     def default(self, o):

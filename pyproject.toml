@@ -90,3 +90,10 @@ markers = ["WIP: Work In Progress"]
 target-version = ['py310']
 preview = true
 safe = true
+
+[tool.vulture]
+exclude = ["tests/"]
+min_confidence = 80
+paths = ["monkeytale"]
+sort_by_size = true
+verbose = true
