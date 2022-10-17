@@ -44,12 +44,11 @@ repos:
 
   # Vulnerability scan of dependencies
   # Must follow PDM export so it can pick up the requirements.txt
-  - repo: https://github.com/twu/skjold
-    rev: v0.5.1
+  - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
+    rev: v1.3.0
     hooks:
-      - id: skjold
-        verbose: true # Important if used with `report_only`, see below.
-
+      - id: python-safety-dependencies-check
+        files: requirements
 
   # See GitHub Actions CodeQL workflow for more checks
   # file:///Users/ao/Documents/AO/monkeytale/.github/workflows/codeql-analysis.yml
