@@ -60,6 +60,25 @@ test = [
 ]
 jupyter = ["jupyter>=1.0.0"]
 
+# ========== T O O L S ==========
+
+[tool.bandit]
+exclude_dirs = ["tests"]
+skips = ["B101"]
+
+[tool.black]
+target-version = ['py310']
+preview = true
+safe = true
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+# Report out failures and Hypothesis results
+# - skip __pypackages__ to avoid discovery of tests from dependencies (PEP582)
+addopts = "--ignore=__pypackages__ --hypothesis-show-statistics --cov-report xml:tests/cov.xml --cov=monkeytale -ra"
+testpaths = ["tests"]
+markers = ["WIP: Work In Progress"]
+
 [tool.semantic_release]
 branch = "main"
 build_command = "pdm build"
@@ -71,19 +90,6 @@ version_variable = [
     "monkeytale/__init__.py:__version__",
     "pyproject.toml:version",
 ]
-
-[tool.pytest.ini_options]
-minversion = "6.0"
-# Report out failures and Hypothesis results
-# - skip __pypackages__ to avoid discovery of tests from dependencies (PEP582)
-addopts = "--ignore=__pypackages__ --hypothesis-show-statistics --cov-report xml:tests/cov.xml --cov=monkeytale -ra"
-testpaths = ["tests"]
-markers = ["WIP: Work In Progress"]
-
-[tool.black]
-target-version = ['py310']
-preview = true
-safe = true
 
 [tool.vulture]
 exclude = ["tests/"]

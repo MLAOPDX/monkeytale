@@ -7,6 +7,8 @@
     "Fuggly's",
     "noqa",
     "outliner",
+    "popd",
+    "pushd",
     "pyupgrade",
     "skjold",
     "Workflowy"
@@ -67,10 +69,13 @@
   "python.linting.prospectorEnabled": true,
   "python.linting.prospectorArgs": [
     "--with-tool",
-    "vulture",
-    "--with-tool",
-    "bandit"
+    "vulture"
   ],
   "python.linting.cwd": "",
-  "python.linting.prospectorPath": "pdm run prospector"
+  "python.linting.prospectorPath": "pdm run prospector",
+  "python.linting.banditEnabled": true,
+  "python.linting.banditArgs": [
+    "-c",
+    "pyproject.toml"
+  ]
 }
