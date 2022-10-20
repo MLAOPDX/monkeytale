@@ -39,7 +39,6 @@ repos:
   - repo: https://github.com/pre-commit/pygrep-hooks
     rev: v1.9.0
     hooks:
-      - id: python-check-blanket-noqa
       - id: python-no-eval
       - id: python-use-type-annotations
   # Security
@@ -47,6 +46,7 @@ repos:
     rev: 1.7.4
     hooks:
       - id: bandit
+        args: [-c, pyproject.toml]
   # Secrets
   - repo: https://github.com/Yelp/detect-secrets
     rev: v1.4.0
