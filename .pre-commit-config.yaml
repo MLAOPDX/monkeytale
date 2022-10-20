@@ -1,11 +1,14 @@
+# See GitHub Actions Release workflow for tests and deployment
+# file:///Users/ao/Documents/AO/monkeytale/.github/workflows/release.yml
+
 repos:
   # COMMIT MESSAGE CHECKS
-  # - repo: https://github.com/commitizen-tools/commitizen
-  #   rev: v2.35.0
-  #   hooks:
-  #     - id: commitizen
-  #     - id: commitizen-branch
-  #       stages: [push]
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v2.35.0
+    hooks:
+      - id: commitizen
+      - id: commitizen-branch
+        stages: [push]
 
   # INTEGRITY & SYNTAX CHECKS
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -78,6 +81,3 @@ repos:
     hooks:
       - id: python-safety-dependencies-check
         files: requirements
-
-  # See GitHub Actions Release workflow for tests and deployment
-  # file:///Users/ao/Documents/AO/monkeytale/.github/workflows/release.yml
