@@ -1,11 +1,11 @@
 import re
 
 import pytest
-from devtools import debug  # noqa
+from devtools import debug
 from hypothesis import example
 from hypothesis import given
 from hypothesis import settings
-from hypothesis import strategies as st  # noqa
+from hypothesis import strategies as st
 from utils import pushd
 from utils import st_expectation
 from utils import st_scenario
