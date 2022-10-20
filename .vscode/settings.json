@@ -9,6 +9,7 @@
     "outliner",
     "popd",
     "pushd",
+    "pyproject",
     "pyupgrade",
     "skjold",
     "Workflowy"
@@ -50,11 +51,26 @@
   "koverage.sufficientCoverageThreshold": 90,
   "merge-conflict.autoNavigateNextConflict.enabled": true,
   "notebook.output.textLineLimit": 500,
+  "python.analysis.ignore": [
+    "tests"
+  ],
   "python.defaultInterpreterPath": "",
   "python.formatting.blackPath": "black",
   "python.formatting.provider": "black",
   "python.languageServer": "Pylance",
+  "python.linting.banditArgs": [
+    "-c",
+    "pyproject.toml"
+  ],
+  "python.linting.banditEnabled": true,
+  "python.linting.cwd": "scratch/linters",
   "python.linting.enabled": true,
+  "python.linting.prospectorEnabled": false,
+  "python.linting.pylintArgs": [
+    "--ignore-paths",
+    "\"*/tests/**/*\""
+  ],
+  "python.linting.pylintEnabled": true,
   "python.sortImports.args": [
     "--profile=black"
   ],
@@ -65,17 +81,5 @@
   "scm.diffDecorationsGutterVisibility": "hover",
   "terminal.integrated.shellIntegration.enabled": true,
   "window.commandCenter": true,
-  "workbench.editor.closeOnFileDelete": true,
-  "python.linting.prospectorEnabled": true,
-  "python.linting.prospectorArgs": [
-    "--with-tool",
-    "vulture"
-  ],
-  "python.linting.cwd": "",
-  "python.linting.prospectorPath": "pdm run prospector",
-  "python.linting.banditEnabled": true,
-  "python.linting.banditArgs": [
-    "-c",
-    "pyproject.toml"
-  ]
+  "workbench.editor.closeOnFileDelete": true
 }
