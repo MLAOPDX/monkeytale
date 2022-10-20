@@ -5,12 +5,12 @@ from pathlib import Path
 from hypothesis import strategies as st
 
 
-UUID_PATTERN = (  # noqa
+UUID_PATTERN = (
     r"(?i)[a-f0-9]{8}-?[a-f0-9]{4}-?4[a-f0-9]{3}-?[89ab][a-f0-9]{3}-?[a-f0-9]{12}"
 )
 
 
-@contextmanager  # noqa
+@contextmanager
 def pushd(path: Path):
     """Context manager version of pushd/popd."""
     old_cwd = os.getcwd()
@@ -22,5 +22,5 @@ def pushd(path: Path):
 
 
 # GENERIC HYPOTHESIS STRATEGIES
-st_scenario = st.uuids(version=4).map(lambda u: u.hex)  # noqa
-st_expectation = st.none()  # noqa
+st_scenario = st.uuids(version=4).map(lambda u: u.hex)
+st_expectation = st.none()
