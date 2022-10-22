@@ -62,7 +62,7 @@ test = [
 jupyter = ["jupyter>=1.0.0"]
 
 [tool.pdm.scripts]
-qa = "radon cc monkeytale/*.py -a -na"
+rd = "radon cc monkeytale/*.py -a -na"
 pc = "pre-commit run"
 
 # ========== T O O L S ==========
