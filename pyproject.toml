@@ -59,7 +59,10 @@ test = [
     "prospector[with_bandit,with_vulture]>=1.7.7",
     "radon>=5.1.0",
 ]
-jupyter = ["jupyter>=1.0.0"]
+jupyter = [
+    "jupyter>=1.0.0",
+    "jupyter-core>=4.11.2",
+]
 
 [tool.pdm.scripts]
 rd = "radon cc monkeytale/*.py -a -na"
