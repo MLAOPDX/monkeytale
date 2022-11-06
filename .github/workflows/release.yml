@@ -36,7 +36,6 @@ jobs:
           enable-pep582: true
       - name: Install application with test dependencies
         run: |
-          pdm --version
           pdm install -dG test
       - name: Run unit tests
         run: |
